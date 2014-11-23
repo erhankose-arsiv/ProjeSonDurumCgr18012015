@@ -1,0 +1,49 @@
+.ui-widget {
+	font-size: 12px !important;
+}
+
+.ui-widget .ui-widget {
+	font-size: 12px !important;
+}
+
+.ui-widget-content,.ui-state-default,.ui-widget-content .ui-state-default,.ui-widget-header .ui-state-default
+	{
+	font-size: 12px !important;
+}
+
+.dialog {
+	float: left;
+	height: auto;
+	width: auto;
+}
+
+.wrap
+{
+width:100%;
+float:left;
+height:auto;
+overflow:hidden;
+}
+
+
+.post
+{
+width: 140px; !important;
+
+height: auto; !important;
+display:inline-block; 
+margin: 3px; 
+}
+
+#tabs li .ui-icon-close {
+	float: left;
+	margin: 0.4em 0.2em 0 0;
+	cursor: pointer;
+}
+
+form {
+	position: relative;
+	display: block;
+	margin-left: 2px;
+	margin-right: 2px;
+}

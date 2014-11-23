@@ -29,8 +29,8 @@ public class Adres extends Base {
 	AdresTip adresTip;
 	
 	@Id
-	@SequenceGenerator(allocationSize=1,initialValue=1,name="DIL_ID_SEQ",sequenceName="DIL_ID_SEQ")
-	@GeneratedValue(generator="DIL_ID_SEQ",strategy=GenerationType.SEQUENCE)
+	@SequenceGenerator(allocationSize=1,initialValue=1,name="ADRES_ID_SEQ",sequenceName="ADRES_ID_SEQ")
+	@GeneratedValue(generator="ADRES_ID_SEQ",strategy=GenerationType.SEQUENCE)
 	@Column(name="ID")
 	public Long getId() {
 		return id;
