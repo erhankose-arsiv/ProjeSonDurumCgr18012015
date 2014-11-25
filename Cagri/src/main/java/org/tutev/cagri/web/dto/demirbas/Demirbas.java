@@ -50,5 +50,71 @@ public class Demirbas extends Base {
 	
 	@Column(name="FIYAT",scale=2,precision=6)
 	double fiyat;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getAd() {
+		return ad;
+	}
+
+	public void setAd(String ad) {
+		this.ad = ad;
+	}
+
+	public String getOzellikler() {
+		return ozellikler;
+	}
+
+	public void setOzellikler(String ozellikler) {
+		this.ozellikler = ozellikler;
+	}
+
+	public String getAciklama() {
+		return aciklama;
+	}
+
+	public void setAciklama(String aciklama) {
+		this.aciklama = aciklama;
+	}
+
+	public boolean isAktif() {
+		return aktif;
+	}
+
+	public void setAktif(boolean aktif) {
+		this.aktif = aktif;
+	}
+
+	public Date getFaturaTarihi() {
+		return faturaTarihi;
+	}
+
+	public void setFaturaTarihi(Date faturaTarihi) {
+		this.faturaTarihi = faturaTarihi;
+	}
+
+	public int getFaturaNo() {
+		return faturaNo;
+	}
+
+	public void setFaturaNo(int faturaNo) {
+		this.faturaNo = faturaNo;
+	}
+
+	public double getFiyat() {
+		return fiyat;
+	}
+
+	public void setFiyat(double fiyat) {
+		this.fiyat = fiyat;
+	}
+	
+	
 	
 }
