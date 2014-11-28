@@ -18,7 +18,7 @@ import org.tutev.cagri.web.dto.firma.Firmalar;
 
 @Entity
 @Table(name = "STOK")
-@SequenceGenerator(name = "STOK_ID_SEQ")
+@SequenceGenerator(name = "STOK_ID_SEQ", initialValue = 1, allocationSize = 1, sequenceName = "STOK_ID_SEQ")
 public class Stok implements Serializable {
 	private long stokId;
 

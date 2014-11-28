@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "STOK_TURLERI")
-@SequenceGenerator(name = "STOK_TUR_ID_SEQ")
+@SequenceGenerator(name = "STOK_TUR_ID_SEQ", initialValue = 1, allocationSize = 1, sequenceName = "STOK_TUR_ID_SEQ")
 public class StokTurleri implements Serializable {
 
 	private long stokTurId;
