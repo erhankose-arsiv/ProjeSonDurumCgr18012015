@@ -14,8 +14,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "FIRMALAR", schema = "AKGUNGEN")
-@SequenceGenerator(name = "MALZEMELER_SEQ", sequenceName = "AKGUNGEN.MALZEMELER_SEQ", allocationSize = 1)
+@Table(name = "FIRMALAR")
+@SequenceGenerator(allocationSize = 1, initialValue = 1, name = "FIRMA_ID_SEQ", sequenceName = "FIRMA_ID_SEQ")
 public class Firmalar implements Serializable {
 
 	private long firmaId;
@@ -23,9 +23,14 @@ public class Firmalar implements Serializable {
 	private String yetkisi;
 	private Date kurulusTarihi;
 
+	public Firmalar(String firmaAdi, String yetkisi, Date kurulusTarihi) {
+		this.firmaAdi = firmaAdi;
+		this.yetkisi = yetkisi;
+		this.kurulusTarihi = kurulusTarihi;
+	}
+
 	@Id
 	@Column(name = "FIRMA_ID")
-	@SequenceGenerator(allocationSize = 1, initialValue = 1, name = "FIRMA_ID_SEQ", sequenceName = "FIRMA_ID_SEQ")
 	@GeneratedValue(generator = "FIRMA_ID_SEQ", strategy = GenerationType.SEQUENCE)
 	public long getFirmaId() {
 		return firmaId;
