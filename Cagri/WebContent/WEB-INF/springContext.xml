@@ -11,10 +11,6 @@
 		http://www.springframework.org/schema/aop 
 		http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
 
-	<bean id="Kullanici" class="org.tutev.cagri.web.dto.Base" />
-	<bean id="Dil" class="org.tutev.cagri.web.dto.genel.Kisi" />
-
-
 	<context:component-scan base-package="org.tutev.cagri.web" />
 	
 
