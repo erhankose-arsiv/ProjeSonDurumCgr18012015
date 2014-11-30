@@ -20,18 +20,18 @@ public class Personel extends Base{
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
-	private int personel_tc;
-	private String personel_adi;
-	private String personel_soyadi;
-	private Date personel_dogumtarihi;
-	private String personel_gorevi;
-	private String personel_vergiNumarasi;
-	private String personel_eposta;
-	private Date personel_iseBaslamaTarihi;
-	private Date personel_istenAyrilmaTarihi;
-	private int personel_maas;
-	private String personel_cinsiyet;
-	private String personel_medeniHali;
+	private Long tc;
+	private String adi;
+	private String soyadi;
+	private Date dogumTarihi;
+	private String gorevi;
+	private Long vergiNumarasi;
+	private String eposta;
+	private Date iseBaslamaTarihi;
+	private Date istenAyrilmaTarihi;
+	private int maas;
+	private String cinsiyet;
+	private String medeniHali;
 	
 
 	@Id
@@ -46,103 +46,101 @@ public class Personel extends Base{
 	}
 	
 	@Column(name="TC")
-	public int getPersonel_tc() {
-		return personel_tc;
+	public Long getTc() {
+		return tc;
 	}
-	public void setPersonel_tc(int personel_tc) {
-		this.personel_tc = personel_tc;
-	}
-	
-	@Column(name="ADI")
-	public String getPersonel_adi() {
-		return personel_adi;
-	}
-	public void setPersonel_adi(String personel_adi) {
-		this.personel_adi = personel_adi;
+	public void setTc(Long tc) {
+		this.tc = tc;
 	}
 	
-	@Column(name="SOYADI")
-	public String getPersonel_soyadi() {
-		return personel_soyadi;
+	@Column(name="AD")
+	public String getAdi() {
+		return adi;
 	}
-	public void setPersonel_soyadi(String personel_soyadi) {
-		this.personel_soyadi = personel_soyadi;
+	public void setAdi(String adi) {
+		this.adi = adi;
+	}
+	
+	@Column(name="Soyad")
+	public String getSoyadi() {
+		return soyadi;
+	}
+	public void setSoyadi(String soyadi) {
+		this.soyadi = soyadi;
 	}
 	
 	@Temporal(TemporalType.DATE)
-	@Column(name="DOGUM_TARIH")
-	public Date getPersonel_dogumtarihi() {
-		return personel_dogumtarihi;
+	@Column(name="DOGUM_TARÝH")
+	public Date getDogumTarihi() {
+		return dogumTarihi;
 	}
-	public void setPersonel_dogumtarihi(Date personel_dogumtarihi) {
-		this.personel_dogumtarihi = personel_dogumtarihi;
-	}
-	
-	@Column(name="GOREVI")
-	public String getPersonel_gorevi() {
-		return personel_gorevi;
-	}
-	public void setPersonel_gorevi(String personel_gorevi) {
-		this.personel_gorevi = personel_gorevi;
+	public void setDogumTarihi(Date dogumTarihi) {
+		this.dogumTarihi = dogumTarihi;
 	}
 	
-	@Column(name="VERGINUMARASI")
-	public String getPersonel_vergiNumarasi() {
-		return personel_vergiNumarasi;
+	@Column(name="GOREV")
+	public String getGorevi() {
+		return gorevi;
 	}
-	public void setPersonel_vergiNumarasi(String personel_vergiNumarasi) {
-		this.personel_vergiNumarasi = personel_vergiNumarasi;
+	public void setGorevi(String gorevi) {
+		this.gorevi = gorevi;
+	}
+	
+	@Column(name="VERGÝNUMARASI")
+	public Long getVergiNumarasi() {
+		return vergiNumarasi;
+	}
+	public void setVergiNumarasi(Long vergiNumarasi) {
+		this.vergiNumarasi = vergiNumarasi;
 	}
 	
 	@Column(name="EPOSTA")
-	public String getPersonel_eposta() {
-		return personel_eposta;
+	public String getEposta() {
+		return eposta;
 	}
-	public void setPersonel_eposta(String personel_eposta) {
-		this.personel_eposta = personel_eposta;
-	}
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="BASLAMATARIHI")
-	public Date getPersonel_iseBaslamaTarihi() {
-		return personel_iseBaslamaTarihi;
-	}
-	public void setPersonel_iseBaslamaTarihi(Date personel_iseBaslamaTarihi) {
-		this.personel_iseBaslamaTarihi = personel_iseBaslamaTarihi;
+	public void setEposta(String eposta) {
+		this.eposta = eposta;
 	}
 	
-	@Temporal(TemporalType.DATE)
-	@Column(name="AYRILMATARIHI")
-	public Date getPersonel_istenAyrilmaTarihi() {
-		return personel_istenAyrilmaTarihi;
+	@Column(name="BASLAMA_TARÝHÝ")
+	public Date getIseBaslamaTarihi() {
+		return iseBaslamaTarihi;
 	}
-	public void setPersonel_istenAyrilmaTarihi(Date personel_istenAyrilmaTarihi) {
-		this.personel_istenAyrilmaTarihi = personel_istenAyrilmaTarihi;
+	public void setIseBaslamaTarihi(Date iseBaslamaTarihi) {
+		this.iseBaslamaTarihi = iseBaslamaTarihi;
+	}
+	
+	@Column(name="AYRÝLMA_TARÝHÝ")
+	public Date getIstenAyrilmaTarihi() {
+		return istenAyrilmaTarihi;
+	}
+	public void setIstenAyrilmaTarihi(Date istenAyrilmaTarihi) {
+		this.istenAyrilmaTarihi = istenAyrilmaTarihi;
 	}
 	
 	@Column(name="MAAS")
-	public int getPersonel_maas() {
-		return personel_maas;
+	public int getMaas() {
+		return maas;
 	}
-	public void setPersonel_maas(int personel_maas) {
-		this.personel_maas = personel_maas;
-	}
-	
-	@Column(name="CINSIYET")
-	public String getPersonel_cinsiyet() {
-		return personel_cinsiyet;
-	}
-	public void setPersonel_cinsiyet(String personel_cinsiyet) {
-		this.personel_cinsiyet = personel_cinsiyet;
+	public void setMaas(int maas) {
+		this.maas = maas;
 	}
 	
-	@Column(name="MEDENI_HAL")
-	public String getPersonel_medeniHali() {
-		return personel_medeniHali;
+	@Column(name="CÝNSÝYET")
+	public String getCinsiyet() {
+		return cinsiyet;
 	}
-	public void setPersonel_medeniHali(String personel_medeniHali) {
-		this.personel_medeniHali = personel_medeniHali;
+	public void setCinsiyet(String cinsiyet) {
+		this.cinsiyet = cinsiyet;
 	}
 	
-
+	@Column(name="MEDENÝHAL")
+	public String getMedeniHali() {
+		return medeniHali;
+	}
+	public void setMedeniHali(String medeniHali) {
+		this.medeniHali = medeniHali;
+	}
+	
+	
 }
