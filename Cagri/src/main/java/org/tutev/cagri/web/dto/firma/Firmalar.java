@@ -1,7 +1,7 @@
 package org.tutev.cagri.web.dto.firma;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "FIRMALAR")
+@Table(name = "GNL_FIRMA")
 @SequenceGenerator(allocationSize = 1, initialValue = 1, name = "FIRMA_ID_SEQ", sequenceName = "FIRMA_ID_SEQ")
 public class Firmalar implements Serializable {
 
