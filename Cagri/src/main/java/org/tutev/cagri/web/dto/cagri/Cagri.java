@@ -71,7 +71,7 @@ public class Cagri extends Base {
 	}
 	
 	@JoinColumn(name="CAGRI_SAHIBI_FIRMA_ID")
-	@ManyToOne(fetch=FetchType.LAZY,optional=true)
+	@ManyToOne(optional=true)
 	public Firmalar getCagriSahibiFirma() {
 		return cagriSahibiFirma;
 	}

@@ -2,6 +2,7 @@ package org.tutev.cagri.web.controller.cagri;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -26,11 +27,11 @@ public class CagriController implements Serializable{
 	private CagriService cagriService;
 	
 	Cagri cagri;
+	List<Cagri> cagriList;
 	
 	@PostConstruct
 	private void init() {		
-		date=new Date();
-
+		cagriList=cagriService.getAll();
 	}
 	
 	public Date getDate() {
@@ -39,6 +40,14 @@ public class CagriController implements Serializable{
 	
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	
+	public List<Cagri> getCagriList() {
+		return cagriList;
+	}
+	
+	public void setCagriList(List<Cagri> cagriList) {
+		this.cagriList = cagriList;
 	}
 	
 	

@@ -1,5 +1,7 @@
 package org.tutev.cagri.web.service;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,13 +20,22 @@ public class CagriService {
 		try{
 			if(cagri.getGelisTarihi()!=null){
 				baseDao.save(cagri);
-
 				return true;
 			}
 			return false;
 		}catch(Exception e){
 			LOGGER.error(e);
 			return false;
+		}
+	}
+
+	public List<Cagri> getAll() {
+		try{	
+			List<Cagri> cagriList=(List<Cagri>)baseDao.getAll(Cagri.class);
+			return cagriList;
+		}catch(Exception e){
+			LOGGER.error(e);
+			return null;
 		}
 	}
 

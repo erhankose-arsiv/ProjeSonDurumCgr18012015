@@ -1,0 +1,37 @@
+INSERT INTO dto_personel(
+            id, ekleme_tarihi, ekleyen, guncelleme_tarihi, guncelleyen, adi, 
+            cinsiyet, dogum_tarih, eposta, gorevi, baslamatarihi, ayrilmatarihi, 
+            maas, medeni_hal, soyadi, tc, verginumarasi)
+    VALUES (4, now(), null, null, 'TESTTEST', 1, 
+            'BAYAN', now(), '', 'Ýþçi', now(), null, 
+            2500, 'Bekar', 'TEST', 987654324, 321);
+
+
+INSERT INTO gnl_firma(
+            firma_id, firma_adi, kurulus_tarihi, yetkilisi)
+    VALUES (2, 'TEST', now(), 'TEST TEST');
+
+
+INSERT INTO gnl_ulke(
+            id, kod, tanim )
+    VALUES (1, 'TR', 'Türkiye' );
+
+
+
+INSERT INTO gnl_il(
+            id, kod, tanim, ulke_id)
+    VALUES (1, '6', 'ANKARA', 1);
+
+
+    INSERT INTO gnl_ilce(
+            id, kod, tanim, il_id)
+    VALUES (1, '6100', 'ÇANKAYA', 1);
+
+
+INSERT INTO cgr_cagri(
+            id, ekleme_tarihi, ekleyen, guncelleme_tarihi, guncelleyen, atanma_tarihi, 
+            cagri_bildirim, gelis_tarihi, adres_id, cagri_sahibi_firma_id, 
+            cagri_alici_personel_id, il_id, ilce_id, ilgili_personel_id)
+    VALUES (2, now(), '1', null, null, now(), 
+            'TEST', now(), null, 1, 
+            1, 1, 1, 1);

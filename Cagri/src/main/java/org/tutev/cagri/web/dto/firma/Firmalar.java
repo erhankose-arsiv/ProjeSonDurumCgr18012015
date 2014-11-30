@@ -23,6 +23,10 @@ public class Firmalar implements Serializable {
 	private String yetkisi;
 	private Date kurulusTarihi;
 
+	public Firmalar() {
+
+	}
+	
 	public Firmalar(String firmaAdi, String yetkisi, Date kurulusTarihi) {
 		this.firmaAdi = firmaAdi;
 		this.yetkisi = yetkisi;

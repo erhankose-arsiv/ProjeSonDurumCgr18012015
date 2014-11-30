@@ -4,11 +4,24 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	template="/layout/layout.xhtml">
+	xmlns:p="http://primefaces.org/ui" template="/layout/layout.xhtml">
 	<ui:define name="content">
 		<h:form>
-			<p:outputLabel value="#{cagriController.date}"></p:outputLabel>
+			<p:outputPanel >
+				<p:dataTable id="tblCagri" var="cagri" value="#{cagriController.cagriList}">
+					<p:column headerText="Id">
+						<h:outputText value="#{cagri.id}" />
+					</p:column>
+
+					<p:column headerText="Geliş Tarihi">
+						<h:outputText value="#{cagri.gelisTarihi}" />
+					</p:column>
+
+					<p:column headerText="Çağrı Sahibi Firma">
+						<h:outputText value="#{cagri.cagriSahibiFirma.firmaAdi}" />
+					</p:column>
+				</p:dataTable>
+			</p:outputPanel>
 		</h:form>
 	</ui:define>
 </ui:composition>
