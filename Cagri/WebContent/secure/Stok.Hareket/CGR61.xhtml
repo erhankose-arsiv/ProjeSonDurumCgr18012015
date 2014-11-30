@@ -8,13 +8,18 @@
 	<ui:define name="content">
 		<h:form>
 			<p:outputPanel >
-				<p:dataTable id="tblCagri" var="cagri" value="#{cagriController.cagriList}">
+				<p:dataTable id="tblCagri" var="cagri" value="#{stokHareketController.stokHareketList}">
 					<p:column headerText="Id">
-						<h:outputText value="#{cagri.id}" />
+						<h:outputText value="#{stokHareket.id}" />
 					</p:column>
 
-					<p:column headerText="Geliş Tarihi">
-						<h:outputText value="#{cagri.gelisTarihi}" />
+
+					<p:column headerText="Stok Fis No ">
+						<h:outputText value="#{stokHareket.fisNo}" />
+					</p:column>
+
+					<p:column headerText="Stok Hareket Tarihi">
+						<h:outputText value="#{stokHareket.tarih}" />
 					</p:column>
 
 					<p:column headerText="Çağrı Sahibi Firma">
