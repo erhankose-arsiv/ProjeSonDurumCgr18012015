@@ -1,3 +1,5 @@
+poooling ve connection Düzelt
+
 INSERT INTO dto_personel(
             id, ekleme_tarihi, ekleyen, guncelleme_tarihi, guncelleyen, adi, 
             cinsiyet, dogum_tarih, eposta, gorevi, baslamatarihi, ayrilmatarihi, 
