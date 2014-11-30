@@ -1,6 +1,5 @@
 package org.tutev.cagri.web.dto.personel;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,9 +12,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.tutev.cagri.web.dto.Base;
+
 @Entity
 @Table(name="DTO_PERSONEL")
-public class Personel_base implements Serializable{
+public class Personel extends Base{
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
