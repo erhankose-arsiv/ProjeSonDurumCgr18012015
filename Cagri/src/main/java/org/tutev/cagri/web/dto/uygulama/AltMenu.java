@@ -63,7 +63,7 @@ public class AltMenu implements Serializable {
 	}
 	
 	@JoinColumn(name="ALTMENU_ID")
-	@ManyToOne(fetch=FetchType.LAZY,optional=true)
+	@OneToOne(fetch=FetchType.LAZY,optional=true)
 	public AltMenu getAltMenu() {
 		return altMenu;
 	}
