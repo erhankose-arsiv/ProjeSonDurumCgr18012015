@@ -8,7 +8,8 @@
 	template="/layout/layout.xhtml">
 	<ui:define name="content">
 		<h:form>
-			<p:outputLabel value="Test"></p:outputLabel>
+			<p:outputLabel value="#{kullanici.username} giriş yaptı."></p:outputLabel>
+			<p:commandButton action="#{loginController.logout}" value="çıkış" ajax="false"></p:commandButton>
 		</h:form>
 	</ui:define>
 </ui:composition>
