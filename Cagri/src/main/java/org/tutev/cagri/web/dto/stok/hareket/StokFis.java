@@ -44,7 +44,7 @@ public class StokFis extends Base implements Serializable {
 
 	@Id
 	@SequenceGenerator(allocationSize = 1, initialValue = 1, sequenceName = "STOK_FIS_SEQ", name = "STOK_FIS_SEQ")
-	@GeneratedValue(generator = "STOK_HAREKET_SEQ", strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(generator = "STOK_FIS_SEQ", strategy = GenerationType.SEQUENCE)
 	@Column(name = "STOK_FIS_ID")
 	public Long getId() {
 		return id;

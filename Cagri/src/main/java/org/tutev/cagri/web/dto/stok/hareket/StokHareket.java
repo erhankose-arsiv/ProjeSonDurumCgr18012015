@@ -32,7 +32,7 @@ public class StokHareket extends  Base implements  Serializable {
     String Aciklama;
 
     @Id
-    @SequenceGenerator(allocationSize = 1, initialValue = 1, sequenceName = "STOK_HAREKET_SEQ", name = "KULLANICI_ID_SEQ")
+    @SequenceGenerator(allocationSize = 1, initialValue = 1, sequenceName = "STOK_HAREKET_SEQ", name = "STOK_HAREKET_SEQ")
     @GeneratedValue(generator = "STOK_HAREKET_SEQ", strategy = GenerationType.SEQUENCE)
     @Column(name = "ID")
     public Long getId() {
