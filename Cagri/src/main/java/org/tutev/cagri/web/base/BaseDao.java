@@ -19,7 +19,7 @@ public class BaseDao {
 
 	public Session getSessionFactory() {
 
-		return sessionFactory.openSession();
+		return sessionFactory.getCurrentSession();
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
