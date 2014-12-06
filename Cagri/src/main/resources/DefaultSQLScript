@@ -5,7 +5,7 @@ INSERT INTO dto_personel(
             cinsiyet, dogum_tarih, eposta, gorevi, baslamatarihi, ayrilmatarihi, 
             maas, medeni_hal, soyadi, tc, verginumarasi)
     VALUES (4, now(), null, null, 'TESTTEST', 1, 
-            'BAYAN', now(), '', '���i', now(), null, 
+            'BAYAN', now(), '', '���i', now(), null, 
             2500, 'Bekar', 'TEST', 987654324, 321);
 
 
@@ -16,7 +16,7 @@ INSERT INTO gnl_firma(
 
 INSERT INTO gnl_ulke(
             id, kod, tanim )
-    VALUES (1, 'TR', 'T�rkiye' );
+    VALUES (1, 'TR', 'T�rkiye' );
 
 
 
@@ -27,7 +27,7 @@ INSERT INTO gnl_il(
 
     INSERT INTO gnl_ilce(
             id, kod, tanim, il_id)
-    VALUES (1, '6100', '�ANKAYA', 1);
+    VALUES (1, '6100', '�ANKAYA', 1);
 
 
 INSERT INTO cgr_cagri(
@@ -37,3 +37,51 @@ INSERT INTO cgr_cagri(
     VALUES (2, now(), '1', null, null, now(), 
             'TEST', now(), null, 1, 
             1, 1, 1, 1);
+            
+            
+------------------------- Uygulama Tables --------------------------
+
+INSERT INTO uyg_menu(id, ad, sira) VALUES (1, 'Admin Menüsü', 1);
+INSERT INTO uyg_menu(id, ad, sira) VALUES (2, 'Kullanıcı Menüsü', 2);
+INSERT INTO uyg_menu(id, ad, sira) VALUES (3, 'Menü 3', 4);
+INSERT INTO uyg_menu(id, ad, sira) VALUES (4, 'Menü 4', 3);
+
+INSERT INTO uyg_altmenu(id, ad, sira, url, altmenu_id, menu_id)
+    VALUES (1, 'Admin Alt menü 1', 1, 'test1', null, 1);
+
+INSERT INTO uyg_altmenu(id, ad, sira, url, altmenu_id, menu_id)
+    VALUES (2, 'Admin Alt menü 2', 2, 'test2', null, 1);
+
+INSERT INTO uyg_altmenu(id, ad, sira, url, altmenu_id, menu_id)
+    VALUES (3, 'Alt menü 1 alt menü', 1, 'test3', 1, null);
+
+INSERT INTO uyg_altmenu(id, ad, sira, url, altmenu_id, menu_id)
+        VALUES (4, 'Kullanıcı Alt menü 1', 1, 'test4', null, 2);
+    
+       
+    
+INSERT INTO auth_yetki(id, tanim) VALUES (1, 'admin');
+INSERT INTO auth_yetki(id, tanim) VALUES (2, 'user');
+
+
+INSERT INTO auth_kullanici(id, ekleme_tarihi, ekleyen, guncelleme_tarihi, guncelleyen, eposta1, eposta2, tel1, tel2, password, username, kisi_id)
+    VALUES (1, now(), 'ekleyen test', now(), 'güncelleyen test', 'eposta1', 'eposta2', 'tel1', 'tel2', '123', 'admin', null);
+
+INSERT INTO auth_kullanici(id, ekleme_tarihi, ekleyen, guncelleme_tarihi, guncelleyen, eposta1, eposta2, tel1, tel2, password, username, kisi_id)
+    VALUES (2, now(), 'ekleyen test', now(), 'güncelleyen test', 'eposta1', 'eposta2', 'tel1', 'tel2', '123', 'user', null);
+    
+    
+INSERT INTO auth_kullanici_yetki(kullanici_id, yetki_id) VALUES (1, 1);
+INSERT INTO auth_kullanici_yetki(kullanici_id, yetki_id) VALUES (1, 2);
+INSERT INTO auth_kullanici_yetki(kullanici_id, yetki_id) VALUES (2, 2);
+
+
+INSERT INTO auth_menu_yetki(menu_id, yetki_id) VALUES (1, 1);
+INSERT INTO auth_menu_yetki(menu_id, yetki_id) VALUES (2, 1);
+INSERT INTO auth_menu_yetki(menu_id, yetki_id) VALUES (3, 1);
+INSERT INTO auth_menu_yetki(menu_id, yetki_id) VALUES (4, 1);
+INSERT INTO auth_menu_yetki(menu_id, yetki_id) VALUES (2, 2);
+INSERT INTO auth_menu_yetki(menu_id, yetki_id) VALUES (3, 2);
+INSERT INTO auth_menu_yetki(menu_id, yetki_id) VALUES (4, 2);           
+
+----------------------- Uygulama Tables end --------------------------------

@@ -44,7 +44,7 @@
 		<param-value>sunny</param-value>
 	</context-param>
       <welcome-file-list>
-        <welcome-file>secure/index.xhtml</welcome-file>
+        <welcome-file>secure/login.xhtml</welcome-file>
       </welcome-file-list>
  
       <servlet>
