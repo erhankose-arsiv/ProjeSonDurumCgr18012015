@@ -62,5 +62,11 @@ public class Il implements Serializable{
 	public void setUlke(Ulke ulke) {
 		this.ulke = ulke;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
 
 }

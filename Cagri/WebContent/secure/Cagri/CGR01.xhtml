@@ -3,15 +3,66 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui" template="/layout/layout.xhtml">
 	<ui:define name="content">
 		<h:form>
-			<p:outputPanel >
-				<p:dataTable id="tblCagri" var="cagri" value="#{uygulamaController.menuList}">
-					
+		<p:growl id="growl" showDetail="true" autoUpdate="true" sticky="true" />
+			<p:outputPanel>
+				<p:dataTable id="tblCagri" var="cagri"
+					value="#{cagriController.cagriList}">
+					<p:column headerText="Id">
+						<h:outputText value="#{cagri.id}" />
+					</p:column>
+
+					<p:column headerText="Geliş Tarihi">
+						<h:outputText value="#{cagri.gelisTarihi}" />
+					</p:column>
+
+					<p:column headerText="Çağrı Sahibi Firma">
+						<h:outputText value="#{cagri.cagriSahibiFirma.firmaAdi}" />
+					</p:column>
+
+					<f:facet name="footer">
+						<p:commandButton value="Yeni" icon="ui-icon-plusthick"
+							onclick="PF('dlgCagri').show();"></p:commandButton>
+					</f:facet>
 				</p:dataTable>
 			</p:outputPanel>
+
+			<p:dialog closable="true" id="dlgCagri" widgetVar="dlgCagri">
+
+				<p:panelGrid>
+					<p:row>
+						<p:column>
+							<h:outputText value="Çağrının Geliş Tarihi :" />
+						</p:column>
+						<p:column>
+							<p:calendar value="#{cagriController.cagri.gelisTarihi}"></p:calendar>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
+							<h:outputText value="Çağrı ili :" />
+						</p:column>
+						<p:column>
+							<p:selectOneMenu id="city" value="#{cagriController.cagri.il}" converter="#{ilConverter}"
+								effect="fold" >	
+								<f:selectItems value="#{dataController.ilList}" var="il" itemLabel="#{il.tanim}" itemValue="#{il}"/>
+							</p:selectOneMenu>
+						</p:column>
+					</p:row>
+
+
+				</p:panelGrid>
+				<f:facet name="footer">
+					<p:commandButton value="Kaydet" icon="ui-icon-save"
+						actionListener="#{cagriController.save}"
+						oncomplete="PF('dlgCagri').hide();"></p:commandButton>
+				</f:facet>
+			</p:dialog>
 		</h:form>
 	</ui:define>
 </ui:composition>

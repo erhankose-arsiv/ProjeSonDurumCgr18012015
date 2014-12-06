@@ -32,6 +32,13 @@ public class CagriController implements Serializable{
 	@PostConstruct
 	private void init() {		
 		cagriList=cagriService.getAll();
+		cagri=new Cagri();
+	}
+	
+	public void save() {
+		
+		System.out.println(getCagri().getGelisTarihi());
+
 	}
 	
 	public Date getDate() {
@@ -50,6 +57,14 @@ public class CagriController implements Serializable{
 		this.cagriList = cagriList;
 	}
 	
+	
+	public Cagri getCagri() {
+		return cagri;
+	}
+	
+	public void setCagri(Cagri cagri) {
+		this.cagri = cagri;
+	}
 	
 
 }

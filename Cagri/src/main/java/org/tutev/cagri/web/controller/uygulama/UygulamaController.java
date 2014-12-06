@@ -20,7 +20,7 @@ import org.tutev.cagri.web.dto.uygulama.Yetki;
 import org.tutev.cagri.web.service.uygulama.UygulamaService;
 
 @Controller("uygulamaController")
-@Scope(value = "session")
+@Scope(value = "globalSession")
 public class UygulamaController {
 
 	MenuModel menuModel;
@@ -34,11 +34,13 @@ public class UygulamaController {
 	}
 
 	@Autowired
-	private UygulamaService uygulamaService;
+	private transient UygulamaService uygulamaService;
 
 	@PostConstruct
 	private void init() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		
+//		if(uygulamaService!=null ){
 		Kullanici kullanici = (Kullanici) session.getAttribute("kullanici");
 
 		List<Menu> menuList = uygulamaService.getAll();
