@@ -7,39 +7,73 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui" template="/layout/layout.xhtml">
 	<ui:define name="content">
-		<h:form>
+		<h:form id="cagriForm">
 		<p:growl id="growl" showDetail="true" autoUpdate="true" sticky="true" />
+			
 			<p:outputPanel>
-				<p:dataTable id="tblCagri" var="cagri"
-					value="#{cagriController.cagriList}">
+				<p:dataTable id="tblCagri" var="cagri" paginator="true" rows="10" rowsPerPageTemplate="5,10,20,30"
+					value="#{cagriController.cagriList}" selectionMode="single" emptyMessage="Kayıt bulunamadı!"  
+					selection="#{cagriController.cagri}" paginatorPosition="bottom" rowKey="#{cagri.id}"
+					paginatorTemplate="Gösterilecek Kayıt Sayısı {RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}">
+					
+                    <f:facet name="header">
+                   	 Çağrı Listesi
+                    </f:facet>
+                    
+                    <p:ajax event="rowSelect" update=":cagriForm:dlgCagri" oncomplete="PF('dlgCagri').show();"/>
+                         
 					<p:column headerText="Id">
 						<h:outputText value="#{cagri.id}" />
 					</p:column>
 
+					<p:column headerText="Çağrı No" filterBy="#{cagri.cagriNo}" >
+						<h:outputText value="#{cagri.cagriNo}" />
+					</p:column>
+
 					<p:column headerText="Geliş Tarihi">
-						<h:outputText value="#{cagri.gelisTarihi}" />
+						<p:calendar value="#{cagri.gelisTarihi}" disabled="true" pattern="MM/dd/yyyy HH:mm:ss"></p:calendar>
 					</p:column>
 
 					<p:column headerText="Çağrı Sahibi Firma">
 						<h:outputText value="#{cagri.cagriSahibiFirma.firmaAdi}" />
 					</p:column>
+					<p:column headerText="Çağrı İli">
+						<h:outputText value="#{cagri.il.tanim}" />
+					</p:column>
+					<p:column headerText="Çağrı İlçesi">
+						<h:outputText value="#{cagri.ilce.tanim}" />
+					</p:column>
+					<p:column headerText="Çağrı Durum Açıklama">
+						<h:outputText value="#{cagri.durumAciklama}" />
+					</p:column>
+					<p:column headerText="Ücretli">
+						<p:selectBooleanCheckbox value="#{cagri.ucretli}" />
+					</p:column>
 
 					<f:facet name="footer">
-						<p:commandButton value="Yeni" icon="ui-icon-plusthick"
+						<p:commandButton value="Yeni" icon="ui-icon-plusthick" 
 							onclick="PF('dlgCagri').show();"></p:commandButton>
 					</f:facet>
 				</p:dataTable>
-			</p:outputPanel>
-
-			<p:dialog closable="true" id="dlgCagri" widgetVar="dlgCagri">
+				</p:outputPanel>
+				
+			<p:dialog closable="true" id="dlgCagri" header="Çağrı Detay " position="center" resizable="false"  widgetVar="dlgCagri">
 
 				<p:panelGrid>
+					<p:row>
+						<p:column>
+							<h:outputText value="Çağrının Durum Açıklama :" />
+						</p:column>
+						<p:column>
+							<p:inputText value="#{cagriController.cagri.durumAciklama}"></p:inputText>
+						</p:column>
+					</p:row>
 					<p:row>
 						<p:column>
 							<h:outputText value="Çağrının Geliş Tarihi :" />
 						</p:column>
 						<p:column>
-							<p:calendar value="#{cagriController.cagri.gelisTarihi}"></p:calendar>
+							<p:calendar value="#{cagriController.cagri.gelisTarihi}" pattern="MM/dd/yyyy HH:mm:ss"></p:calendar>
 						</p:column>
 					</p:row>
 
@@ -48,9 +82,12 @@
 							<h:outputText value="Çağrı ili :" />
 						</p:column>
 						<p:column>
-							<p:selectOneMenu id="il"  value="#{cagriController.il}" converter="#{ilConverter}"
+							<p:selectOneMenu id="il"  value="#{cagriController.cagri.il}" converter="#{ilConverter}"
 								effect="fold" >	
-								<f:selectItems value="#{dataController.ilList}" var="il" itemLabel="#{il}" itemValue="#{il}"/>
+								<f:selectItems value="#{dataController.ilList}" var="il" itemLabel="#{il.tanim}" itemValue="#{il}"/>
+								<p:column>
+					                <h:outputText value="#{il.tanim}" />
+					            </p:column>
 							</p:selectOneMenu>
 						</p:column>
 					</p:row>
@@ -58,11 +95,21 @@
 
 				</p:panelGrid>
 				<f:facet name="footer">
-					<p:commandButton value="Kaydet" icon="ui-icon-save"
+					<p:commandButton value="Kaydet" icon="ui-icon-save" update="tblCagri"
 						actionListener="#{cagriController.save}"
 						oncomplete="PF('dlgCagri').hide();"></p:commandButton>
+						<p:commandButton value="Sil" actionListener="#{cagriController.delete}" oncomplete="PF('dlgCagri').hide();" update="growl tblCagri">
+					        <p:confirm header="Silme Onay" message="Emin misiniz ?" icon="ui-icon-alert" />
+					    </p:commandButton>
 				</f:facet>
+				
 			</p:dialog>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+		        <p:commandButton value="Evet" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="Hayır" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		    </p:confirmDialog>
+			
+
 		</h:form>
 	</ui:define>
 </ui:composition>

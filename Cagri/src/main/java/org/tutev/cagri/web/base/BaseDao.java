@@ -40,7 +40,7 @@ public class BaseDao {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(Object object) {
 		try {
-			getSession().update(object);
+			getSession().delete(object);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

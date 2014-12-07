@@ -14,9 +14,9 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="GNL_IL")
-public class Il implements Serializable{
-	
+@Table(name = "GNL_IL")
+public class Il implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -25,48 +25,62 @@ public class Il implements Serializable{
 	String tanim;
 	Ulke ulke;
 	String kod;
-	
-	
+
 	@Id
-	@SequenceGenerator(allocationSize=1,initialValue=1,name="IL_ID_SEQ",sequenceName="IL_ID_SEQ")
-	@GeneratedValue(generator="IL_ID_SEQ",strategy=GenerationType.SEQUENCE)
-	@Column(name="ID")
+	@SequenceGenerator(allocationSize = 1, initialValue = 1, name = "IL_ID_SEQ", sequenceName = "IL_ID_SEQ")
+	@GeneratedValue(generator = "IL_ID_SEQ", strategy = GenerationType.SEQUENCE)
+	@Column(name = "ID")
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	@Column(name="TANIM",length=50)
+
+	@Column(name = "TANIM", length = 50)
 	public String getTanim() {
 		return tanim;
 	}
+
 	public void setTanim(String tanim) {
 		this.tanim = tanim;
 	}
-	
-	@Column(name="KOD",length=50)
+
+	@Column(name = "KOD", length = 50)
 	public String getKod() {
 		return kod;
 	}
+
 	public void setKod(String kod) {
 		this.kod = kod;
 	}
-	
-	@JoinColumn(name="ULKE_ID")
-	@ManyToOne(fetch=FetchType.LAZY,optional=true)
+
+	@JoinColumn(name = "ULKE_ID")
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
 	public Ulke getUlke() {
 		return ulke;
 	}
+
 	public void setUlke(Ulke ulke) {
 		this.ulke = ulke;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Il))
+			return false;
+
+		if (this != null && this.id != null) {
+			Il other = (Il) obj;
+			if (!this.id.equals(other.id))
+				return false;
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }

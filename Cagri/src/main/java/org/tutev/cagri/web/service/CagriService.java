@@ -12,33 +12,54 @@ import org.tutev.cagri.web.dto.cagri.Cagri;
 @Service("cagriService")
 @Transactional
 public class CagriService {
-	
-	Logger LOGGER =Logger.getLogger(CagriService.class);
-	
+
+	Logger LOGGER = Logger.getLogger(CagriService.class);
+
 	@Autowired
 	private transient BaseDao baseDao;
-	
-	private boolean save(Cagri cagri) {
-		try{
-			if(cagri.getGelisTarihi()!=null){
+
+	public boolean save(Cagri cagri) {
+		try {
+			if (cagri.getGelisTarihi() != null) {
 				baseDao.save(cagri);
 				return true;
 			}
 			return false;
-		}catch(Exception e){
+		} catch (Exception e) {
+			LOGGER.error(e);
+			return false;
+		}
+	}
+
+	public boolean delete(Cagri cagri) {
+		try {
+			baseDao.delete(cagri);
+			return true;
+		} catch (Exception e) {
 			LOGGER.error(e);
 			return false;
 		}
 	}
 
 	public List<Cagri> getAll() {
-		try{	
-			List<Cagri> cagriList=(List<Cagri>)baseDao.getAll(Cagri.class);
+		try {
+			List<Cagri> cagriList = (List<Cagri>) baseDao.getAll(Cagri.class);
 			return cagriList;
-		}catch(Exception e){
+		} catch (Exception e) {
 			LOGGER.error(e);
 			return null;
 		}
+	}
+
+	public void update(Cagri cagri) {
+		try {
+			if (cagri.getGelisTarihi() != null) {
+				baseDao.update(cagri);
+			}
+		} catch (Exception e) {
+			LOGGER.error(e);
+		}
+		
 	}
 
 }

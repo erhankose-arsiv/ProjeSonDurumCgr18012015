@@ -88,6 +88,7 @@ public class Cagri extends Base {
 
 	private Integer lokasyonaGidisSayisi;
 	
+	
 		
 	
 	@Id 

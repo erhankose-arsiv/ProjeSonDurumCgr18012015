@@ -24,7 +24,8 @@ public class IlConverter implements Converter {
 			String value) {
 		if (value != null && value.trim().length() > 0) {
 			try {
-				return genericService.getIlById(Long.parseLong(value));
+				Il il= genericService.getIlById(Long.parseLong(value));
+				return il;
 			} catch (Exception e) {
 				e.printStackTrace();
 				return null;
