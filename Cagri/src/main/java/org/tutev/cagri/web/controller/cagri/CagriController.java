@@ -5,15 +5,17 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.tutev.cagri.web.dto.cagri.Cagri;
+import org.tutev.cagri.web.dto.genel.Il;
 import org.tutev.cagri.web.service.CagriService;
 
 @Controller("cagriController")
-@Scope(value="session")
+@Scope(value="view")
 public class CagriController implements Serializable{
 
 	/**
@@ -24,20 +26,24 @@ public class CagriController implements Serializable{
 	Date date;
 	
 	@Autowired
-	private CagriService cagriService;
+	private transient CagriService cagriService;
 	
 	Cagri cagri;
 	List<Cagri> cagriList;
+	Il il;
 	
 	@PostConstruct
-	private void init() {		
+	private void init() {	
+		FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 		cagriList=cagriService.getAll();
+		il=new Il();
 		cagri=new Cagri();
 	}
 	
 	public void save() {
 		
-		System.out.println(getCagri().getGelisTarihi());
+		System.out.println(cagri.getGelisTarihi());
+		System.out.println(il.getTanim());
 
 	}
 	
@@ -66,5 +72,12 @@ public class CagriController implements Serializable{
 		this.cagri = cagri;
 	}
 	
+	public Il getIl() {
+		return il;
+	}
+	
+	public void setIl(Il il) {
+		this.il = il;
+	}
 
 }

@@ -8,6 +8,8 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.NumberFormat;
+
 @MappedSuperclass
 public class Base implements Serializable{
 
@@ -18,6 +20,7 @@ public class Base implements Serializable{
 	String guncelleyen;
 	Date eklemeTarihi;
 	Date guncellemeTarihi;
+	Boolean durum;
 	
 	@Column(name="EKLEYEN",length=100)
 	public String getEkleyen() {
@@ -53,5 +56,14 @@ public class Base implements Serializable{
 		this.guncellemeTarihi = guncellemeTarihi;
 	}
 	
+	
+	@Column(name="DURUM")
+	public Boolean getDurum() {
+		return durum;
+	}
+	
+	public void setDurum(Boolean durum) {
+		this.durum = durum;
+	}
 
 }

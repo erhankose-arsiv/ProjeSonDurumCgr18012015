@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-@WebFilter(filterName = "AuthFilter", urlPatterns = { "*.xhtml" })
+//@WebFilter(filterName = "AuthFilter", urlPatterns = { "*.xhtml" })
 public class AuthFilter implements Filter {
 
 	private static final Logger logger = Logger.getLogger(AuthFilter.class);

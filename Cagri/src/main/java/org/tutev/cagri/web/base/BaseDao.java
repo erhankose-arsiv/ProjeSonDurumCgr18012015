@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository("baseDao")
-// @Service("baseDao")
 public class BaseDao {
 	@Autowired
 	private SessionFactory sessionFactory;

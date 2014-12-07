@@ -18,12 +18,12 @@
 
 	<context:component-scan base-package="org.tutev.cagri.web" />
 	
+<!-- 	<aop:aspectj-autoproxy /> -->
+<!-- 	<task:scheduler id="taskScheduler" /> -->
+<!-- 	<task:executor id="taskExecutor" pool-size="3" /> -->
+<!-- 	<tx:annotation-driven transaction-manager="txManager" /> -->
+<!-- 	<task:annotation-driven executor="taskExecutor" scheduler="taskScheduler" /> -->
 
-	<aop:aspectj-autoproxy />
-	<task:scheduler id="taskScheduler" />
-	<task:executor id="taskExecutor" pool-size="3" />
-	<tx:annotation-driven transaction-manager="txManager" />
-	<task:annotation-driven executor="taskExecutor" scheduler="taskScheduler" />
 	
 	
 	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />

@@ -48,9 +48,9 @@
 							<h:outputText value="Çağrı ili :" />
 						</p:column>
 						<p:column>
-							<p:selectOneMenu id="city" value="#{cagriController.cagri.il}" converter="#{ilConverter}"
+							<p:selectOneMenu id="il"  value="#{cagriController.il}" converter="#{ilConverter}"
 								effect="fold" >	
-								<f:selectItems value="#{dataController.ilList}" var="il" itemLabel="#{il.tanim}" itemValue="#{il}"/>
+								<f:selectItems value="#{dataController.ilList}" var="il" itemLabel="#{il}" itemValue="#{il}"/>
 							</p:selectOneMenu>
 						</p:column>
 					</p:row>
