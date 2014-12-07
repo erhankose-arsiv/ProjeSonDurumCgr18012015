@@ -5,10 +5,12 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.tutev.cagri.web.base.BaseDao;
 import org.tutev.cagri.web.dto.firma.Firmalar;
 
 @Service("firmaService")
+@Transactional
 public class FirmaService {
 
 	Logger LOGGER =Logger.getLogger(FirmaService.class);

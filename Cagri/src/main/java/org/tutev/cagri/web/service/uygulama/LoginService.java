@@ -13,6 +13,7 @@ import org.tutev.cagri.web.base.BaseDao;
 import org.tutev.cagri.web.dto.genel.Kullanici;
 
 @Service("loginService")
+@Transactional
 public class LoginService {
 
 	Logger LOGGER = Logger.getLogger(LoginService.class);
@@ -25,7 +26,7 @@ public class LoginService {
 
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 	public Kullanici getKullaniciByUsernamePassword(String username, String password) {
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(Kullanici.class);
 		criteria.add(Restrictions.eq("username", username));
 		criteria.add(Restrictions.eq("password", password));
