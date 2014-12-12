@@ -9,7 +9,7 @@
 	<ui:define name="content">
 		<h:form id="cagriForm">
 		<p:growl id="growl" showDetail="true" autoUpdate="true" sticky="true" />
-			
+			<div align="center">
 			<p:outputPanel>
 				<p:dataTable id="tblCagri" var="cagri" paginator="true" rows="10" rowsPerPageTemplate="5,10,20,30"
 					value="#{cagriController.cagriList}" selectionMode="single" emptyMessage="Kayıt bulunamadı!"  
@@ -57,7 +57,7 @@
 				</p:dataTable>
 				</p:outputPanel>
 				
-			<p:dialog closable="true" id="dlgCagri" header="Çağrı Detay " position="center" resizable="false"  widgetVar="dlgCagri">
+			<p:dialog closable="true" id="dlgCagri" header="Çağrı Detay " position="center" resizable="true"  widgetVar="dlgCagri">
 
 				<p:panelGrid>
 					<p:row>
@@ -82,18 +82,52 @@
 							<h:outputText value="Çağrı ili :" />
 						</p:column>
 						<p:column>
-							<p:selectOneMenu id="il"  value="#{cagriController.cagri.il}" converter="#{ilConverter}"
+							<p:selectOneMenu id="il" value="#{cagriController.cagri.il}" converter="#{ilConverter}"
 								effect="fold" >	
 								<f:selectItems value="#{dataController.ilList}" var="il" itemLabel="#{il.tanim}" itemValue="#{il}"/>
 								<p:column>
 					                <h:outputText value="#{il.tanim}" />
 					            </p:column>
+					            
+          					   <p:ajax event="valueChange" update="ilce"  listener="#{cagriController.ilChanged}" />
+							</p:selectOneMenu>
+						</p:column>
+					</p:row>
+					
+					<p:row>
+						<p:column>
+							<h:outputText value="Çağrı ilçesi :" />
+						</p:column>
+						<p:column>
+							<p:selectOneMenu id="ilce"  value="#{cagriController.cagri.ilce}" converter="#{ilceConverter}"
+								effect="fold" >	
+								<f:selectItems value="#{cagriController.ilceList}" var="ilce" itemLabel="#{ilce.tanim}" itemValue="#{ilce}"/>
+								<p:column>
+					                <h:outputText value="#{ilce.tanim}" />
+					            </p:column>
 							</p:selectOneMenu>
 						</p:column>
 					</p:row>
 
-
 				</p:panelGrid>
+				<p:tabView>
+			        <p:tab title="Godfather Part I">
+			            <h:panelGrid columns="2" cellpadding="10">
+			                <h:outputText
+			                    value="The story begins as Don Vito Corleone..." />
+			            </h:panelGrid>
+			        </p:tab>
+			        <p:tab title="Godfather Part II">
+			            <h:panelGrid columns="2" cellpadding="10">
+			                <h:outputText value="Francis Ford Coppola's legendary..." />
+			            </h:panelGrid>
+			        </p:tab>
+			        <p:tab title="Godfather Part III">
+			            <h:panelGrid columns="2" cellpadding="10">
+			                <h:outputText value="After a break of more than 15 years..." />
+			            </h:panelGrid>
+			        </p:tab>
+			    </p:tabView>
 				<f:facet name="footer">
 					<p:commandButton value="Kaydet" icon="ui-icon-save" update="tblCagri"
 						actionListener="#{cagriController.save}"
@@ -108,7 +142,7 @@
 		        <p:commandButton value="Evet" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
 		        <p:commandButton value="Hayır" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 		    </p:confirmDialog>
-			
+			</div>
 
 		</h:form>
 	</ui:define>

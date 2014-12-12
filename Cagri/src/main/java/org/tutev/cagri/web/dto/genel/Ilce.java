@@ -63,4 +63,22 @@ public class Ilce implements Serializable{
 	public void setIl(Il il) {
 		this.il = il;
 	}
+	
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Ilce))
+			return false;
+
+		if (this != null && this.id != null) {
+			Ilce other = (Ilce) obj;
+			if (!this.id.equals(other.id))
+				return false;
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
