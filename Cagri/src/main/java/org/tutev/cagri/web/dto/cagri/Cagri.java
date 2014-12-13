@@ -2,6 +2,7 @@ package org.tutev.cagri.web.dto.cagri;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -148,7 +149,7 @@ public class Cagri extends Base {
 	}
 	
 	@JoinColumn(name="IL_ID")
-	@ManyToOne(fetch=FetchType.LAZY,optional=true)
+	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL,optional=true)
 	public Il getIl() {
 		return il;
 	}
@@ -157,7 +158,7 @@ public class Cagri extends Base {
 	}
 	
 	@JoinColumn(name="ILCE_ID")
-	@ManyToOne(fetch=FetchType.LAZY,optional=true)
+	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL,optional=true)
 	public Ilce getIlce() {
 		return ilce;
 	}
@@ -166,7 +167,7 @@ public class Cagri extends Base {
 	}
 	
 	@JoinColumn(name="ADRES_ID")
-	@ManyToOne(fetch=FetchType.LAZY,optional=true)
+	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL,optional=true)
 	public Adres getAdres() {
 		return adres;
 	}

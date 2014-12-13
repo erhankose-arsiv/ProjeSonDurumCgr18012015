@@ -7,7 +7,9 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.ResultTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
@@ -53,21 +55,30 @@ public class BaseDao {
 		return criteria.list();
 	}
 
-//	@Transactional(readOnly = true, propagation = Propagation.REQUIRED)
-//	public QueryResult getAll(Criteria criteria, OrderData orderData,int firstRecord, int pageSize) {
-//		criteria.add(Restrictions.eq("state", true));
-//
-//		QueryResult qr = new QueryResult();
-//		criteria.setProjection(Projections.rowCount());
-//		qr.setCount(((Long) criteria.uniqueResult()).intValue());
-//
-//		criteria.addOrder(Order.asc("id"));
-//		criteria.setProjection(null);
-//		criteria.setResultTransformer(Criteria.ROOT_ENTITY);
-//		qr.setList(criteria.setFirstResult(firstRecord).setMaxResults(pageSize).list());
-//
-//		return qr;
-//	}
+	@Transactional(readOnly = true, propagation = Propagation.REQUIRED)
+	public QueryResults getAll(Criteria criteria, OrderData orderData,int firstRecord, int pageSize) {
+
+		QueryResults result=new QueryResults();
+		
+		criteria.setProjection(Projections.rowCount());
+		result.setRowCount(((Number)criteria.uniqueResult()).intValue());
+		criteria.setProjection(null);
+		
+		
+		if(orderData!=null){
+			if(orderData.getOrderType()==OrderType.ASC)
+				criteria.addOrder(Order.asc(orderData.getSortField()));
+			else
+				criteria.addOrder(Order.desc(orderData.getSortField()));
+		}
+		
+		criteria.setFirstResult(firstRecord);
+		criteria.setMaxResults(pageSize);
+		criteria.setResultTransformer(Criteria.ROOT_ENTITY);
+		result.setListe(criteria.list());
+		
+		return result;
+	}
 	
 	
 	public Object getAllbyOrder(Class cls, String column) {

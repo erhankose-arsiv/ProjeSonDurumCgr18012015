@@ -1,12 +1,22 @@
 package org.tutev.cagri.web.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.tutev.cagri.web.base.BaseDao;
+import org.tutev.cagri.web.base.OrderData;
+import org.tutev.cagri.web.base.OrderType;
+import org.tutev.cagri.web.base.QueryResults;
+import org.tutev.cagri.web.dto.Sabit;
 import org.tutev.cagri.web.dto.cagri.Cagri;
 
 @Service("cagriService")
@@ -62,4 +72,46 @@ public class CagriService {
 		
 	}
 
+	public QueryResults getCagriListesi(Map<String, String> filters,OrderData orderData, int firstRecord, int pageSize) {
+		Criteria criteria =baseDao.getSession().createCriteria(Cagri.class);
+		if(filters.get("cagriNo")!=null){
+			criteria.add(Restrictions.ilike("cagriNo", filters.get("cagriNo"),MatchMode.ANYWHERE));
+		}
+		
+		if(filters.get("ilce.tanim")!=null){
+			criteria.createAlias("ilce", "ilc").add(Restrictions.ilike("ilc.tanim", filters.get("ilce.tanim"),MatchMode.ANYWHERE));
+		}
+		
+		if(filters.get("gelisTarihiBitis")!=null){
+			criteria.add(Restrictions.le("gelisTarihi", Sabit.stringToDateDDMMYYY(filters.get("gelisTarihiBitis"))));
+		}
+
+		if(filters.get("gelisTarihiBaslama")!=null){
+			criteria.add(Restrictions.ge("gelisTarihi", Sabit.stringToDateDDMMYYY(filters.get("gelisTarihiBaslama"))));
+		}
+
+		return baseDao.getAll(criteria, orderData, firstRecord, pageSize);
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
