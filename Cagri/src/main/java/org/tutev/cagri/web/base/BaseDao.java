@@ -3,6 +3,7 @@ package org.tutev.cagri.web.base;
 import java.util.List;
 import java.util.Locale;
 
+import org.hibernate.CacheMode;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -24,6 +25,7 @@ public class BaseDao {
 	public void save(Object object) {
 		try {
 			getSession().save(object);
+			getSession().flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -60,6 +62,7 @@ public class BaseDao {
 
 		QueryResults result=new QueryResults();
 		
+		criteria.setCacheMode(CacheMode.REFRESH);
 		criteria.setProjection(Projections.rowCount());
 		result.setRowCount(((Number)criteria.uniqueResult()).intValue());
 		criteria.setProjection(null);

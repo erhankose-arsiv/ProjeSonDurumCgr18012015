@@ -3,8 +3,11 @@ package org.tutev.cagri.web.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.sql.DataSource;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
+import org.hibernate.SQLQuery;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
@@ -33,7 +36,10 @@ public class CagriService {
 			if (cagri.getGelisTarihi() != null) {
 				baseDao.save(cagri);
 				if(cagri.getId()!=null){
-					update(cagriNoOlustur(cagri));
+					String cgrNo=cagriNoOlustur(cagri.getId().toString());
+					SQLQuery query= baseDao.getSession().createSQLQuery(" UPDATE CGR_CAGRI SET CAGRI_NO= '"+cgrNo+"' WHERE ID="+cagri.getId());
+					query.executeUpdate();					
+					baseDao.getSession().flush();
 				}
 				return true;
 			}
@@ -44,17 +50,15 @@ public class CagriService {
 		}
 	}
 
-	private Cagri cagriNoOlustur(Cagri cagri) {
-		String id= cagri.getId().toString();
+	private String cagriNoOlustur(String id) {
 		String cagriNo="CGR";
 		for (int i = 0; i < 6; i++) {
 			if(id.length()<=10)
 				cagriNo+="0";
 		}
 		cagriNo+=id;
-		cagri.setCagriNo(cagriNo);
 		
-		return cagri;
+		return cagriNo;
 	}
 
 	public boolean delete(Cagri cagri) {

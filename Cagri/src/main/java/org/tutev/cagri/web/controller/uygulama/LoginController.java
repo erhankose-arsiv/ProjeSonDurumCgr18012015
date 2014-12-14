@@ -17,7 +17,7 @@ import org.tutev.cagri.web.service.uygulama.LoginService;
 public class LoginController {
 
 	@Autowired
-	private LoginService loginService;
+	private transient LoginService loginService;
 
 	private String username;
 	private String password;
@@ -51,7 +51,7 @@ public class LoginController {
 		kullanici = loginService.getKullaniciByUsernamePassword(username, password);
 		if (kullanici == null) {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_WARN, "Hatalı Kullanıcı Adı/Şifre!", "Lütfen tekrar deneyiniz!"));
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "HatalÄ± KullanÄ±cÄ± AdÄ±/Å�ifre!", "LÃ¼tfen tekrar deneyiniz!"));
 			return "login";
 		} else {
 			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
