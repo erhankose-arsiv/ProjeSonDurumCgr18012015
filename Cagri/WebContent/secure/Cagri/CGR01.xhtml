@@ -76,6 +76,15 @@
 			<p:dialog closable="true" id="dlgCagri" header="Çağrı Detay " position="center" resizable="true"  widgetVar="dlgCagri">
 
 				<p:panelGrid>
+				
+				<p:row>
+						<p:column>
+							<h:outputText value="Çağrının No :" />
+						</p:column>
+						<p:column>
+							<p:inputText disabled="true"  value="#{cagriController.cagri.cagriNo}" ></p:inputText>
+						</p:column>
+					</p:row>
 					<p:row>
 						<p:column>
 							<h:outputText value="Çağrının Durum Açıklama :" />

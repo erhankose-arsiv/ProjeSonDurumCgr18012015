@@ -32,6 +32,9 @@ public class CagriService {
 		try {
 			if (cagri.getGelisTarihi() != null) {
 				baseDao.save(cagri);
+				if(cagri.getId()!=null){
+					update(cagriNoOlustur(cagri));
+				}
 				return true;
 			}
 			return false;
@@ -39,6 +42,19 @@ public class CagriService {
 			LOGGER.error(e);
 			return false;
 		}
+	}
+
+	private Cagri cagriNoOlustur(Cagri cagri) {
+		String id= cagri.getId().toString();
+		String cagriNo="CGR";
+		for (int i = 0; i < 6; i++) {
+			if(id.length()<=10)
+				cagriNo+="0";
+		}
+		cagriNo+=id;
+		cagri.setCagriNo(cagriNo);
+		
+		return cagri;
 	}
 
 	public boolean delete(Cagri cagri) {
