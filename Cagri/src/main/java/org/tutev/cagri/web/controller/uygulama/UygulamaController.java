@@ -1,5 +1,6 @@
 package org.tutev.cagri.web.controller.uygulama;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -21,20 +22,17 @@ import org.tutev.cagri.web.service.uygulama.UygulamaService;
 
 @Controller("uygulamaController")
 @Scope(value = "globalSession")
-public class UygulamaController {
+public class UygulamaController implements Serializable {
 
-	MenuModel menuModel;
-
-	public MenuModel getMenuModel() {
-		return menuModel;
-	}
-
-	public void setMenuModel(MenuModel menuModel) {
-		this.menuModel = menuModel;
-	}
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2697766417493559551L;
 
 	@Autowired
 	private transient UygulamaService uygulamaService;
+	
+	MenuModel menuModel;
 
 	@PostConstruct
 	private void init() {
@@ -80,5 +78,14 @@ public class UygulamaController {
 				}
 			}
 		}
+	}
+	
+	
+	public MenuModel getMenuModel() {
+		return menuModel;
+	}
+
+	public void setMenuModel(MenuModel menuModel) {
+		this.menuModel = menuModel;
 	}
 }
