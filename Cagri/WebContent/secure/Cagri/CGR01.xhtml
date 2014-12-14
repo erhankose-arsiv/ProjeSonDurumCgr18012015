@@ -87,16 +87,38 @@
 
 					<f:facet name="footer">
 						<p:commandButton value="Yeni" icon="ui-icon-plusthick" action="#{cagriController.yeni}"
-							onclick="PF('dlgCagri').show();"  ></p:commandButton>
+							oncomplete="PF('dlgCagri').show();"  ></p:commandButton>
 							<p:commandButton value="Temizle" action="#{cagriController.clearFilters}"
 							oncomplete="tblCagri.clearFilters();" update="@form"  ></p:commandButton>
-					</f:facet>
+							<h:commandLink value="Excel">
+
+								<p:dataExporter type="xls"  target="tblCagri" fileName="Cagri"
+									pageOnly="true" />
+							</h:commandLink>
+
+							<h:commandLink value="PDF">
+
+								<p:dataExporter type="pdf" target="tblCagri" fileName="Cagri"
+									pageOnly="true" />
+							</h:commandLink>
+
+							<h:commandLink value="CSV">
+								<p:dataExporter type="csv"  target="tblCagri" fileName="Cagri"
+									pageOnly="true" />
+							</h:commandLink>
+
+							<h:commandLink value="XML">
+
+								<p:dataExporter type="xml"  target="tblCagri" fileName="Cagri"
+									pageOnly="true" />
+							</h:commandLink>
+						</f:facet>
 				</p:dataTable>
 				</p:outputPanel>
 				
 			<p:dialog closable="true" id="dlgCagri" header="Çağrı Detay " position="center" resizable="true"  widgetVar="dlgCagri">
 
-				<p:panelGrid>
+				<p:panelGrid id="pnlCagriDetay" >
 				
 				<p:row>
 						<p:column>
@@ -175,8 +197,8 @@
 			        </p:tab>
 			    </p:tabView>
 				<f:facet name="footer">
-					<p:commandButton value="Kaydet" icon="ui-icon-save" update="tblCagri"
-						actionListener="#{cagriController.save}"
+					<p:commandButton value="Kaydet" icon="ui-icon-save" update="tblCagri dlgCagri"
+						actionListener="#{cagriController.save}" 
 						oncomplete="PF('dlgCagri').hide();"></p:commandButton>
 						<p:commandButton value="Sil" actionListener="#{cagriController.delete}" oncomplete="PF('dlgCagri').hide();" update="growl tblCagri">
 					        <p:confirm header="Silme Onay" message="Emin misiniz ?" icon="ui-icon-alert" />

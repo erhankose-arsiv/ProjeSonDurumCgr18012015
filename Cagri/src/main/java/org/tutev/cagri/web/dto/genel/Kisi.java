@@ -14,6 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.tutev.cagri.web.dto.Base;
 
@@ -32,6 +33,8 @@ public class Kisi extends Base{
 	Il il;
 	Ilce ilce;
 	Kimlik kimlik;
+	
+	String adSoyad;
 	
 	@Id
 	@SequenceGenerator(allocationSize=1,initialValue=1,name="KISI_ID_SEQ",sequenceName="KISI_ID_SEQ")
@@ -53,6 +56,7 @@ public class Kisi extends Base{
 	}
 	
 	@Column(name="SOYAD",length=50)
+//	@NamedQuery(query=" from tbl_abc where kisiId=:id")
 	public String getSoyad() {
 		return soyad;
 	}
@@ -96,4 +100,8 @@ public class Kisi extends Base{
 		this.kimlik = kimlik;
 	}
 	
+	@Transient
+	public String getAdSoyad() {
+		return getAd() +" "+ getSoyad();
+	}
 }

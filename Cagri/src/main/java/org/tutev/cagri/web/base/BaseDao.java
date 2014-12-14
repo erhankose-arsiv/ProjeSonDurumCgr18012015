@@ -62,7 +62,7 @@ public class BaseDao {
 
 		QueryResults result=new QueryResults();
 		
-		criteria.setCacheMode(CacheMode.REFRESH);
+//		criteria.setCacheable(false);
 		criteria.setProjection(Projections.rowCount());
 		result.setRowCount(((Number)criteria.uniqueResult()).intValue());
 		criteria.setProjection(null);

@@ -121,13 +121,13 @@ public class CagriController implements Serializable {
 	public void save() {
 		if(cagri.getId()==null){
 			cagriService.save(cagri);
-			cagri = new Cagri();
-			listele();
 		}else{
 			cagriService.update(cagri);
-			cagri = new Cagri();
-			listele();
 		}
+	
+		cagri = null;
+		listele();
+		ilceList=null;
 	}
 	
 	public void ilChanged() {

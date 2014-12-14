@@ -35,6 +35,8 @@ public class Kullanici extends Base {
 	Kisi kisi;
 	Iletisim iletisim;
 	List<Yetki> yetkiList;
+	
+	
 
 	@JoinTable(name = "AUTH_KULLANICI_YETKI", joinColumns = { @JoinColumn(name = "KULLANICI_ID", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "YETKI_ID", nullable = false, updatable = false) })
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -94,5 +96,7 @@ public class Kullanici extends Base {
 	public void setIletisim(Iletisim iletisim) {
 		this.iletisim = iletisim;
 	}
+	
+	
 
 }
