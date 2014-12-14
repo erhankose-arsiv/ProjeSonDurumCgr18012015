@@ -34,15 +34,36 @@
 					</p:column>
 
 					<p:column headerText="Geliş Tarihi">
-					<f:facet name="header">
-						<p:calendar id="cgrBasTarih" value="#{cagriController.gelisTarihiBaslama}"  >
-							<p:ajax event="dateSelect" update="tblCagri" listener="#{cagriController.filter}"/>
-						</p:calendar>
-						<p:calendar id="cgrBitTarih" value="#{cagriController.gelisTarihiBitis}" valueChangeListener="#{cagriController.filter}"  >
-							<p:ajax event="dateSelect" update="tblCagri" listener="#{cagriController.filter}"/>
-						</p:calendar>
-					</f:facet>
-						<h:outputText value="#{cagri.gelisTarihi}" >
+							<f:facet name="header">
+								<p:panelGrid>
+									<p:row>
+										<p:column>
+											<p:outputLabel value="Üst Limit:"></p:outputLabel>
+										</p:column>
+										<p:column>
+											<p:calendar id="cgrBasTarih"
+												value="#{cagriController.gelisTarihiBaslama}">
+												<p:ajax event="dateSelect" update="tblCagri"
+													listener="#{cagriController.filter}" />
+											</p:calendar>
+										</p:column>
+									</p:row>
+									<p:row>
+										<p:column>
+											<p:outputLabel value="Alt Limit:"></p:outputLabel>
+										</p:column>
+										<p:column>
+											<p:calendar id="cgrBitTarih"
+												value="#{cagriController.gelisTarihiBitis}"
+												valueChangeListener="#{cagriController.filter}">
+												<p:ajax event="dateSelect" update="tblCagri"
+													listener="#{cagriController.filter}" />
+											</p:calendar>
+										</p:column>
+									</p:row>
+								</p:panelGrid>
+							</f:facet>
+							<h:outputText value="#{cagri.gelisTarihi}" >
 						
                         <f:convertDateTime  pattern="dd/MM/yyyy HH:mm:ss" />
 						</h:outputText>

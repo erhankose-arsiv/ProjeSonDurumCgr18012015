@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Index;
 import org.tutev.cagri.web.dto.Base;
 import org.tutev.cagri.web.dto.firma.Firmalar;
 import org.tutev.cagri.web.dto.genel.Adres;
@@ -184,6 +185,7 @@ public class Cagri extends Base {
 	}
 	
 	
+	@Index(name="CGR_IND_CAGRINO")
 	@Column(name="CAGRI_NO",length=15)
 	public String getCagriNo() {
 		return cagriNo;
