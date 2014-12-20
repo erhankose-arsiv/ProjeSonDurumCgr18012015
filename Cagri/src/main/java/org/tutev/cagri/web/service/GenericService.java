@@ -1,5 +1,6 @@
 package org.tutev.cagri.web.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.tutev.cagri.web.base.BaseDao;
+import org.tutev.cagri.web.base.Exception;
 import org.tutev.cagri.web.dto.genel.Il;
 import org.tutev.cagri.web.dto.genel.Ilce;
 
@@ -33,5 +35,10 @@ public class GenericService  {
 
 	public Ilce getIlceById(Long id) {
 		return (Ilce)baseDao.getById(id, Ilce.class);
+	}
+	
+	public void addException(Exception exc) {
+		exc.setTarih(new Date());
+		baseDao.save(exc);
 	}
 }

@@ -90,28 +90,7 @@
 							oncomplete="PF('dlgCagri').show();"  ></p:commandButton>
 							<p:commandButton value="Temizle" action="#{cagriController.clearFilters}"
 							oncomplete="tblCagri.clearFilters();" update="@form"  ></p:commandButton>
-							<h:commandLink value="Excel">
-
-								<p:dataExporter type="xls"  target="tblCagri" fileName="Cagri"
-									pageOnly="true" />
-							</h:commandLink>
-
-							<h:commandLink value="PDF">
-
-								<p:dataExporter type="pdf" target="tblCagri" fileName="Cagri"
-									pageOnly="true" />
-							</h:commandLink>
-
-							<h:commandLink value="CSV">
-								<p:dataExporter type="csv"  target="tblCagri" fileName="Cagri"
-									pageOnly="true" />
-							</h:commandLink>
-
-							<h:commandLink value="XML">
-
-								<p:dataExporter type="xml"  target="tblCagri" fileName="Cagri"
-									pageOnly="true" />
-							</h:commandLink>
+							<p:commandButton value="Rapor Al" ajax="false" action="#{raporController.raporAl}"></p:commandButton>
 						</f:facet>
 				</p:dataTable>
 				</p:outputPanel>

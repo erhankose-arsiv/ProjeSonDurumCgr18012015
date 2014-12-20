@@ -12,7 +12,7 @@
         </el-resolver>
     </application>
 <!--         <factory> -->
-<!-- 		<exception-handler-factory>org.tutev.web.framework.exception.TTGlobalException</exception-handler-factory> -->
+<!-- 		<exception-handler-factory>org.tutev.cagri.web.base.GlobalExceptionHandler</exception-handler-factory> -->
 <!-- 	</factory> -->
     <system-event-listener>
 	    <system-event-listener-class>com.example.ViewScopeCallbackRegistrar</system-event-listener-class>

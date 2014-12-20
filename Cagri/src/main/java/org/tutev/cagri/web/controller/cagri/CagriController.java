@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.tutev.cagri.web.base.OrderData;
 import org.tutev.cagri.web.base.OrderType;
 import org.tutev.cagri.web.base.QueryResults;
+import org.tutev.cagri.web.controller.MessageController;
 import org.tutev.cagri.web.dto.Sabit;
 import org.tutev.cagri.web.dto.cagri.Cagri;
 import org.tutev.cagri.web.dto.genel.Ilce;
@@ -38,6 +39,8 @@ public class CagriController implements Serializable {
 	private transient CagriService cagriService;
 	@Autowired
 	private transient GenericService genericService;
+	@Autowired
+	private transient MessageController messageController;
 
 	Cagri cagri;
 	List<Cagri> cagriList;
@@ -121,8 +124,10 @@ public class CagriController implements Serializable {
 	public void save() {
 		if(cagri.getId()==null){
 			cagriService.save(cagri);
+			messageController.kaydetmeBasarili();
 		}else{
 			cagriService.update(cagri);
+			messageController.guncellemeBasarili();
 		}
 	
 		cagri = null;

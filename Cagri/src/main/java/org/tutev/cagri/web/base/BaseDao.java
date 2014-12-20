@@ -2,6 +2,7 @@ package org.tutev.cagri.web.base;
 
 import java.util.List;
 import java.util.Locale;
+import java.lang.Exception;
 
 import org.hibernate.CacheMode;
 import org.hibernate.Criteria;

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptCagriListe" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="36f4a7ad-1662-4521-a09a-13f1afede214">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="294"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="IL_ID" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PNG" class="java.io.InputStream"/>
+	<parameter name="JPG" class="java.io.InputStream"/>
+	<queryString>
+		<![CDATA[select c.id,c.cagri_no,c.durum_aciklama,c.gelis_tarihi,il.tanim, ilce.tanim from cgr_cagri c
+left outer join gnl_il il on il.id=c.il_id
+left outer join gnl_ilce ilce on ilce.id=c.ilce_id
+where il.id=$P{IL_ID}]]>
+	</queryString>
+	<field name="id" class="java.lang.Long"/>
+	<field name="cagri_no" class="java.lang.String"/>
+	<field name="durum_aciklama" class="java.lang.String"/>
+	<field name="gelis_tarihi" class="java.sql.Timestamp"/>
+	<field name="tanim" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="170" y="0" width="263" height="62" uuid="9a1e4c9e-4aff-4fa8-9b8d-0e6698b0ac84"/>
+				<textElement verticalAlignment="Middle">
+					<font size="36" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Çağrı Listesi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="219" y="62" width="196" height="22" uuid="e83904d9-3b5e-42eb-97b5-357cd26366d0"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee SubTitle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="94" width="383" height="42" uuid="f815f49e-fe1d-44c5-8b14-75b1eb6f7076"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="0" width="169" height="136" uuid="df53a2fa-a67f-4a8a-8179-50375c69184a"/>
+				<textFieldExpression><![CDATA[""+$P{JPG}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="433" y="-43" width="182" height="137" uuid="7a166e28-80db-48d7-a513-91fe69fa8eb3"/>
+				<textFieldExpression><![CDATA[""+$P{PNG}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="100" height="15" forecolor="#736343" uuid="05263370-63b0-4680-8221-d2f302c398ce"/>
+				<textElement>
+					<font pdfEncoding="Cp1254"/>
+				</textElement>
+				<text><![CDATA[Cağrı ID]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="92a1bb99-a642-4eba-9bf8-ca75497e76f8"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="100" y="0" width="138" height="15" forecolor="#736343" uuid="7fea0a3f-c561-45d4-bfb0-31163bf815f0"/>
+				<textElement>
+					<font pdfEncoding="Cp1254"/>
+				</textElement>
+				<text><![CDATA[Cağrı No]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="0" width="99" height="20" uuid="2ebef596-b708-4d43-9ebd-11e35d4d4d89"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="100" y="0" width="138" height="20" uuid="42f42d7f-fcf0-47a7-a465-aa0fc1cdd8b9"/>
+				<textFieldExpression><![CDATA[$F{cagri_no}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="238" y="0" width="100" height="20" uuid="dbf96811-b6f3-4d6d-a362-30934c58b434"/>
+				<textFieldExpression><![CDATA[$F{gelis_tarihi}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="338" y="0" width="100" height="20" uuid="480b465e-8d98-4b8d-a408-01e9a91f072a"/>
+				<textFieldExpression><![CDATA[$F{tanim}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="438" y="0" width="117" height="20" uuid="c94325a7-6097-4394-ac52-ae63e6f3f822"/>
+				<textFieldExpression><![CDATA[$F{durum_aciklama}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="93cc6527-a0aa-47a7-a005-4078ca55f9e4"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343" uuid="403c22a9-060b-41d9-89a6-37f5d5544f33"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343" uuid="73f82a0f-15d1-47bb-b8ba-807c9cbb7794"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Sayfa "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="73b58823-f0fe-4bab-b08d-080adda28fe8"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
