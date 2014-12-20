@@ -43,8 +43,7 @@ public class GlobalExceptionHandler  extends ExceptionHandlerWrapper {
 			if (throwable instanceof Throwable) {
 				Throwable t = (Throwable)throwable;
 				t.printStackTrace();
-				
-//				(t.getMessage());
+		
 				genericService.addException(new Exception(t.getMessage()));
 				
 				FacesContext facesContext = FacesContext.getCurrentInstance();

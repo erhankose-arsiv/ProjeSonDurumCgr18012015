@@ -11,9 +11,9 @@
             org.springframework.web.jsf.el.SpringBeanFacesELResolver
         </el-resolver>
     </application>
-<!--         <factory> -->
-<!-- 		<exception-handler-factory>org.tutev.cagri.web.base.GlobalExceptionHandler</exception-handler-factory> -->
-<!-- 	</factory> -->
+        <factory>
+		<exception-handler-factory>org.tutev.cagri.web.base.GlobalException</exception-handler-factory>
+	</factory>
     <system-event-listener>
 	    <system-event-listener-class>com.example.ViewScopeCallbackRegistrar</system-event-listener-class>
 	    <system-event-class>javax.faces.event.PostConstructViewMapEvent</system-event-class>

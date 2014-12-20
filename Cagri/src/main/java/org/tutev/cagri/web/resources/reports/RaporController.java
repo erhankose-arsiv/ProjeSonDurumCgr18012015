@@ -57,10 +57,10 @@ public class RaporController implements Serializable {
 		Connection connection = null;
 		try {
 			parameters.put("IL_ID", 6L);
-			raporName="rptCagriListe.jrxml";
+			raporName="org/tutev/cagri/web/resources/reports/rptCagriListe.jrxml";
 			
-			String png="coffee_stain.png";
-			String jpg="coffee.jpg";
+			String png="org/tutev/cagri/web/resources/reports/coffee_stain.png";
+			String jpg="org/tutev/cagrli/web/resources/reports/coffee.jpg";
 			Resource pngR = new ClassPathResource(png);
 			Resource jpgR = new ClassPathResource(jpg);
 			parameters.put("PNG", pngR.getInputStream());

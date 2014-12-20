@@ -3,11 +3,11 @@ package org.tutev.cagri.web.base;
 import javax.faces.context.ExceptionHandler;
 import javax.faces.context.ExceptionHandlerFactory;
 
-public class GlobalExceptionHandlerFactory extends ExceptionHandlerFactory {
+public class GlobalException extends ExceptionHandlerFactory {
 	
 	private ExceptionHandlerFactory exceptionHandlerFactory;
 	
-	public GlobalExceptionHandlerFactory(ExceptionHandlerFactory exceptionHandlerFactory) {	
+	public GlobalException(ExceptionHandlerFactory exceptionHandlerFactory) {	
 		this.exceptionHandlerFactory = exceptionHandlerFactory;
 	}
 	
@@ -17,5 +17,4 @@ public class GlobalExceptionHandlerFactory extends ExceptionHandlerFactory {
 		result = new GlobalExceptionHandler(result);
 		return result;
 	}
-
 }
