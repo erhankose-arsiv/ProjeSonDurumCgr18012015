@@ -64,6 +64,7 @@ public class CagriController implements Serializable {
 		return lazyModel;
 	}
 
+	
 	public void listele() {
 		this.lazyModel = new LazyDataModel<Cagri>() {
 

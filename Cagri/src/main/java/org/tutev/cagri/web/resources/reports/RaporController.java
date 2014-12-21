@@ -11,6 +11,8 @@ import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.export.JRPdfExporterParameter;
 import net.sf.jasperreports.engine.export.JRXlsExporter;
 import net.sf.jasperreports.engine.export.JRXlsExporterParameter;
 
@@ -60,7 +62,7 @@ public class RaporController implements Serializable {
 			raporName="org/tutev/cagri/web/resources/reports/rptCagriListe.jrxml";
 			
 			String png="org/tutev/cagri/web/resources/reports/coffee_stain.png";
-			String jpg="org/tutev/cagrli/web/resources/reports/coffee.jpg";
+			String jpg="org/tutev/cagri/web/resources/reports/coffeett.jpg";
 			Resource pngR = new ClassPathResource(png);
 			Resource jpgR = new ClassPathResource(jpg);
 			parameters.put("PNG", pngR.getInputStream());
@@ -107,6 +109,52 @@ public class RaporController implements Serializable {
 	}
 
 	
+	public void raporAlPdf() {
+		Connection connection = null;
+		try {
+			parameters.put("IL_ID", 6L);
+			raporName="org/tutev/cagri/web/resources/reports/rptCagriListe.jrxml";
+			
+			String png="org/tutev/cagri/web/resources/reports/coffee_stain.png";
+			String jpg="org/tutev/cagri/web/resources/reports/coffee.jpg";
+			Resource pngR = new ClassPathResource(png);
+			Resource jpgR = new ClassPathResource(jpg);
+			parameters.put("PNG", pngR.getInputStream());
+			parameters.put("JPG", jpgR.getInputStream());
+			
+			connection = dataSource.getConnection();
+			Resource resource = new ClassPathResource(raporName);
+			String report = resource.getFile().getAbsolutePath();
+			JasperReport jasperReport = JasperCompileManager.compileReport(report);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, connection);
+
+			String raporAdi = resource.getFilename().substring(0,resource.getFilename().lastIndexOf('.')) + ".pdf";
+
+			Arac.getResponse().reset();
+
+			Arac.getResponse().setContentType("application/pdf");
+			Arac.getResponse().setHeader("Content-disposition",	"attachment; filename=\"" + raporAdi + "\"");
+			JRPdfExporter expPdf = new JRPdfExporter();
+			expPdf.setParameter(JRPdfExporterParameter.JASPER_PRINT,jasperPrint);
+			expPdf.setParameter(JRPdfExporterParameter.OUTPUT_STREAM,Arac.getResponse().getOutputStream());
+
+			expPdf.exportReport();
+
+			Arac.getFacesContext().responseComplete();
+			RequestContext context = RequestContext.getCurrentInstance();
+			context.execute("alert('rapor bitti')");
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 
 
 

@@ -90,7 +90,8 @@
 							oncomplete="PF('dlgCagri').show();"  ></p:commandButton>
 							<p:commandButton value="Temizle" action="#{cagriController.clearFilters}"
 							oncomplete="tblCagri.clearFilters();" update="@form"  ></p:commandButton>
-							<p:commandButton value="Rapor Al" ajax="false" action="#{raporController.raporAl}"></p:commandButton>
+							<p:commandButton value="Rapor Al (XLS)" ajax="false" action="#{raporController.raporAl}"></p:commandButton>
+							<p:commandButton value="Rapor Al (PDF)" ajax="false" action="#{raporController.raporAlPdf}"></p:commandButton>
 						</f:facet>
 				</p:dataTable>
 				</p:outputPanel>

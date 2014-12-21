@@ -4,12 +4,114 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	template="/layout/layoutyeni.xhtml">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/layout/layoutyeni.xhtml">
 	<ui:define name="content">
-		<h:form>
+		<h:form id="frmAnaSayfa">
+			<p:panelGrid id="pnlDetay">
+				<p:row>
+					<p:column>
+						<h:outputText value=" il :" />
+					</p:column>
+					<p:column>
+						<p:selectOneMenu id="il" value="#{indexController.il}"
+							converter="#{ilConverter}" effect="fold">
+							<f:selectItems value="#{dataController.ilList}" var="il"
+								itemLabel="#{il.tanim}" itemValue="#{il}" />
+							<p:column>
+								<h:outputText value="#{il.tanim}" />
+							</p:column>
+
+						</p:selectOneMenu>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:commandButton value="Hava Durumu" ajax="false"
+							action="#{indexController.havaDurumuVer}"></p:commandButton>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+
+			<p:panelGrid id="pnlHavaDurumDetay">
+				<p:row>
+					<p:column>
+						<h:outputText value=" Location :" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{indexController.curWeather.location}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<h:outputText value=" Wind :" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{indexController.curWeather.wind}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<h:outputText value=" Visibility :" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{indexController.curWeather.visibility}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<h:outputText value=" SkyConditions :" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{indexController.curWeather.skyConditions}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<h:outputText value=" Temperature :" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{indexController.curWeather.temperature}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<h:outputText value=" DewPoint :" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{indexController.curWeather.dewPoint}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<h:outputText value=" RelativeHumidity :" />
+					</p:column>
+					<p:column>
+						<h:outputText
+							value="#{indexController.curWeather.relativeHumidity}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<h:outputText value=" Pressure :" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{indexController.curWeather.pressure}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<h:outputText value=" Status :" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{indexController.curWeather.status}" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+
 			<p:outputLabel value="#{kullanici.username} giriş yaptı."></p:outputLabel>
-			<p:commandButton action="#{loginController.logout}" value="çıkış" ajax="false"></p:commandButton>
+			<p:commandButton action="#{loginController.logout}" value="çıkış"
+				ajax="false"></p:commandButton>
 		</h:form>
 	</ui:define>
 </ui:composition>

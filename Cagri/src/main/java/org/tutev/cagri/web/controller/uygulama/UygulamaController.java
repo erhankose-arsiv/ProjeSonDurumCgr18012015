@@ -1,5 +1,6 @@
 package org.tutev.cagri.web.controller.uygulama;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -36,6 +37,7 @@ public class UygulamaController implements Serializable {
 
 	@PostConstruct
 	private void init() {
+		try{
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		
 //		if(uygulamaService!=null ){
@@ -76,6 +78,13 @@ public class UygulamaController implements Serializable {
 
 					break;
 				}
+			}
+		}
+		}catch(Exception e){
+			try {
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/Cagri/secure/login.xhtml?faces-redirect=true");
+			} catch (IOException e1) {
+				e1.printStackTrace();
 			}
 		}
 	}

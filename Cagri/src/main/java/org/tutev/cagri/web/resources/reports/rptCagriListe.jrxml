@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptCagriListe" language="java" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="36f4a7ad-1662-4521-a09a-13f1afede214">
-	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="294"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptCagriListe" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="36f4a7ad-1662-4521-a09a-13f1afede214">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
@@ -55,14 +55,14 @@ where il.id=$P{IL_ID}]]>
 				</textElement>
 				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="1" y="0" width="169" height="136" uuid="df53a2fa-a67f-4a8a-8179-50375c69184a"/>
-				<textFieldExpression><![CDATA[""+$P{JPG}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="433" y="-43" width="182" height="137" uuid="7a166e28-80db-48d7-a513-91fe69fa8eb3"/>
-				<textFieldExpression><![CDATA[""+$P{PNG}]]></textFieldExpression>
-			</textField>
+			<image>
+				<reportElement x="438" y="-41" width="170" height="135" uuid="9d175145-cee4-4b30-966c-cdd4ba33e0be"/>
+				<imageExpression><![CDATA[$P{PNG}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="-1" width="170" height="137" uuid="aba941d0-3e8a-470b-9906-977988315f74"/>
+				<imageExpression><![CDATA[$P{JPG}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
