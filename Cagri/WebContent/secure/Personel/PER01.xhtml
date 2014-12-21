@@ -3,25 +3,139 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui" template="/layout/layout.xhtml">
 	<ui:define name="content">
-		<h:form>
-			<p:outputPanel >
-				<p:dataTable id="tblPersonel" var="personel" value="#{personelController.personelList}">
-					<p:column headerText="Id">
-						<h:outputText value="#{personel.id}" />
-					</p:column>
+		<h:form id="personelForm">
+			<p:growl id="growl" showDetail="true" autoUpdate="true" sticky="true" />
+			<div align="center">
+				<p:outputPanel>
+					<p:dataTable id="tblPersonel" var="personel"
+						value="#{personelController.lazyModel}" widgetVar="tblPersonel"
+						paginator="true" rows="10" rowsPerPageTemplate="3,5,10,20,30"
+						lazy="true" selectionMode="single"
+						emptyMessage="Kayıt bulunamadı!"
+						selection="#{personelController.personel}"
+						paginatorPosition="bottom" rowKey="#{personel.id}"
+						rowIndexVar="inds"
+						paginatorTemplate="Gösterilecek Kayıt Sayısı {RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}">
 
-					<p:column headerText="Personel Adı">
-						<h:outputText value="#{personel.adi} {personel.soyadi}" />
-					</p:column>
+						<f:facet name="header">Personel Listesi</f:facet>
+						<p:ajax event="rowSelect" update=":personelForm:dlgPersonel"
+							listener="#{personelController.onRowSelect}"
+							oncomplete="PF('dlgPersonel').show();" />
 
-					<p:column headerText="Tc Nunamarası">
-						<h:outputText value="#{personel.tc}" />
-					</p:column>
-				</p:dataTable>
-			</p:outputPanel>
+						<p:column headerText="Sıra">
+							<h:outputText value="#{inds+1}" />
+						</p:column>
+
+						<p:column headerText="Id">
+							<h:outputText value="#{personel.id}" />
+						</p:column>
+
+						<p:column headerText="Personel Adı">
+							<h:outputText value="#{personel.adi} {personel.soyadi}" />
+						</p:column>
+
+						<p:column headerText="Tc Nunamarası">
+							<h:outputText value="#{personel.tc}" />
+						</p:column>
+
+						<p:column headerText="Eposta">
+							<h:outputText value="#{personel.eposta}" />
+						</p:column>
+
+						<p:column headerText="Görevi">
+							<h:outputText value="#{personel.gorevi}" />
+						</p:column>
+
+						<f:facet name="footer">
+							<p:commandButton value="Yeni" icon="ui-icon-plusthick"
+								action="#{personelController.yeni}"
+								oncomplete="PF('dlgPersonel').show();"></p:commandButton>
+							<p:commandButton value="Temizle"
+								action="#{personelController.clearFilters}"
+								oncomplete="tblPersonel.clearFilters();" update="@form"></p:commandButton>
+							<p:commandButton value="Rapor Al" ajax="false"
+								action="#{raporController.raporAl}"></p:commandButton>
+						</f:facet>
+					</p:dataTable>
+				</p:outputPanel>
+
+				<p:dialog closable="true" id="dlgPersonel" header="Personel Detay "
+					position="center" resizable="true" widgetVar="dlgPersonel">
+
+					<p:panelGrid id="pnlPersonelDetay">
+
+						<p:row>
+							<p:column>
+								<h:outputText value="Personel No :" />
+							</p:column>
+							<p:column>
+								<p:inputText disabled="true"
+									value="#{personelController.personel.tc}"></p:inputText>
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<h:outputText value="Personel Ad Soyad :" />
+							</p:column>
+							<p:column>
+								<p:inputText
+									value="#{personelController.personel.adi} #{personelController.personel.soyadi}"></p:inputText>
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<h:outputText value="Görevi :" />
+							</p:column>
+							<p:column>
+								<p:inputText value="#{personelController.personel.gorevi}"></p:inputText>
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column>
+								<h:outputText value="Maaş :" />
+							</p:column>
+							<p:column>
+								<p:inputText value="#{personelController.personel.maas}"></p:inputText>
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+					<p:tabView>
+						<p:tab title="Godfather Part I">
+							<h:panelGrid columns="2" cellpadding="10">
+								<h:outputText value="The story begins as Don Vito Corleone..." />
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Godfather Part II">
+							<h:panelGrid columns="2" cellpadding="10">
+								<h:outputText value="Francis Ford Coppola's legendary..." />
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Godfather Part III">
+							<h:panelGrid columns="2" cellpadding="10">
+								<h:outputText value="After a break of more than 15 years..." />
+							</h:panelGrid>
+						</p:tab>
+					</p:tabView>
+					<f:facet name="footer">
+						<p:commandButton value="Kaydet" icon="ui-icon-save"
+							update="tblPersonel dlgPersonel"
+							actionListener="#{personelController.save}"
+							oncomplete="PF('dlgPersonel').hide();"></p:commandButton>
+						<p:commandButton value="Sil"
+							actionListener="#{personelController.delete}"
+							oncomplete="PF('dlgPersonel').hide();" update="growl tblPersonel">
+							<p:confirm header="Silme Onay" message="Emin misiniz ?"
+								icon="ui-icon-alert" />
+						</p:commandButton>
+					</f:facet>
+
+				</p:dialog>
+			</div>
 		</h:form>
 	</ui:define>
 </ui:composition>
