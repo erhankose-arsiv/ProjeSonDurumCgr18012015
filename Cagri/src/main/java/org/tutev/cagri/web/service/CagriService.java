@@ -80,6 +80,18 @@ public class CagriService {
 			return null;
 		}
 	}
+	
+	public Cagri getByCagriNo(String cagriNo) {
+		try {
+			Criteria criteria=baseDao.getSession().createCriteria(Cagri.class);
+			criteria.add(Restrictions.eq("cagriNo", cagriNo));
+			criteria.add(Restrictions.eq("durum", Boolean.TRUE));
+			return (Cagri) criteria.uniqueResult();
+		} catch (Exception e) {
+			LOGGER.error(e);
+			return null;
+		}
+	}
 
 	public void update(Cagri cagri) {
 		try {

@@ -23,7 +23,15 @@
             /WEB-INF/springContext.xml
          </param-value>
       </context-param>
- 
+
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>srv</servlet-name> -->
+<!-- 		<servlet-class>org.tutev.cagri.ws.CagriWebService</servlet-class> -->
+<!-- 	</servlet> -->
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>srv</servlet-name> -->
+<!-- 		<url-pattern>/CagriWebService</url-pattern> -->
+<!-- 	</servlet-mapping> -->
  
 		 <context-param>
 		    <param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>

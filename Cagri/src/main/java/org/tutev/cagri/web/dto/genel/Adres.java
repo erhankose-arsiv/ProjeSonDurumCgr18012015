@@ -72,6 +72,11 @@ public class Adres extends Base {
 	public void setAdresTip(AdresTip adresTip) {
 		this.adresTip = adresTip;
 	}
+	@Override
+	public String toString() {
+		return "Adres [adresSerbest=" + adresSerbest + ", adresTip=" + adresTip
+				+ "]";
+	}
 	
 	
 }
