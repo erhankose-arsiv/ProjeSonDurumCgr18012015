@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.tutev.cagri.web.dto.Base;
 
@@ -20,6 +21,7 @@ public class CagriKategori extends Base{
 	private Long id;
 	private String kod;
 	private String tanim;
+	@XmlTransient
 	private CagriKategori ustCagriKategori;
 	
 	

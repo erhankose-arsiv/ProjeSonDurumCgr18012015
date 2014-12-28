@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "getIncidentByNo", namespace = "incident.tutev.org")
+@XmlRootElement(name = "getIncidentByNo", namespace = "incident.cagri.tutev.org")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getIncidentByNo", namespace = "incident.tutev.org", propOrder = {
+@XmlType(name = "getIncidentByNo", namespace = "incident.cagri.tutev.org", propOrder = {
     "incidentNo",
     "username",
     "password"

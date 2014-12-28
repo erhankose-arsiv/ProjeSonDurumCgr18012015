@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "getIncidentByNoResponse", namespace = "incident.tutev.org")
+@XmlRootElement(name = "getIncidentByNoResponse", namespace = "incident.cagri.tutev.org")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getIncidentByNoResponse", namespace = "incident.tutev.org")
+@XmlType(name = "getIncidentByNoResponse", namespace = "incident.cagri.tutev.org")
 public class GetCagriByNoResponse {
 
     @XmlElement(name = "return", namespace = "")

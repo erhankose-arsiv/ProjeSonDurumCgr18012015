@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @WebService(name="CagriWebService", portName="CagriWebService",
-serviceName="CagriWebService",targetNamespace="incident.tutev.org")
+serviceName="CagriWebService",targetNamespace="incident.cagri.tutev.org")
 public class CagriWebService implements Serializable{
 	
 	/**

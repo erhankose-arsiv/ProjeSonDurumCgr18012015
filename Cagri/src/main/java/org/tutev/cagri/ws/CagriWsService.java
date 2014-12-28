@@ -1,7 +1,6 @@
 package org.tutev.cagri.ws;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.tutev.cagri.web.dto.cagri.Cagri;
 import org.tutev.cagri.web.service.CagriService;
@@ -11,8 +10,6 @@ public class CagriWsService{
 
 	@Autowired
 	private transient CagriService  cagriService;
-	
-	private ApplicationContext applicationContext;
 	
 	public CagriServiceResponse cagriSorgula(String cagriNo,String kullaniciAdi,String sifre){
 		
