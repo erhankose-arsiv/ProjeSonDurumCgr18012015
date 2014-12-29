@@ -50,8 +50,8 @@ Logger LOGGER =Logger.getLogger(PersonelService.class);
 	}
 	public QueryResults getPersonelListesi(Map<String, String> filters,OrderData orderData, int firstRecord, int pageSize) {
 		Criteria criteria =baseDao.getSession().createCriteria(Cagri.class);
-		if(filters.get("tc")!=null){
-			criteria.add(Restrictions.ilike("tc", filters.get("tc"),MatchMode.ANYWHERE));
+		if(filters.get("id")!=null){
+			criteria.add(Restrictions.ilike("id", filters.get("id"),MatchMode.ANYWHERE));
 		}
 		return baseDao.getAll(criteria, orderData, firstRecord, pageSize);
 	}
