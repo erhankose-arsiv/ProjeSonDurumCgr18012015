@@ -12,6 +12,7 @@ import org.tutev.cagri.web.base.BaseDao;
 import org.tutev.cagri.web.base.Exception;
 import org.tutev.cagri.web.dto.genel.Il;
 import org.tutev.cagri.web.dto.genel.Ilce;
+import org.tutev.cagri.web.dto.kullanici.Role;
 
 @Service("genericService")
 @Transactional
@@ -25,6 +26,10 @@ public class GenericService  {
 		return (Il)baseDao.getById(id, Il.class);
 	}
 
+	@Transactional
+	public Role getRoleById(Long id) {
+		return (Role)baseDao.getById(id, Role.class);
+	}
 
 	public List<Ilce> getIlceByIlId(Long id) {
 		Criteria criteria=baseDao.getSession().createCriteria(Ilce.class);

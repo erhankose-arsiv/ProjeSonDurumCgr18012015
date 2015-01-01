@@ -103,9 +103,9 @@ public class PersonelController implements Serializable {
 				}
 
 				// sort
-				if (sortField != null) {
-					Collections.sort(data, new LazySorter(sortField, sortOrder));
-				}
+//				if (sortField != null) {
+//					Collections.sort(data, new LazySorter(sortField, sortOrder));
+//				}
 
 				// rowCount
 				int dataSize = data.size();

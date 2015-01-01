@@ -9,6 +9,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<properties>
 		<spring.version>3.1.1.RELEASE</spring.version>
+		<security.version>3.1.3.RELEASE</security.version>
 		<log4j.version>1.2.17</log4j.version>
 		<c3p0.version>0.9.1.2</c3p0.version>
 		<postgres.version>9.1-901.jdbc3</postgres.version>
@@ -61,6 +62,28 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
 			<version>${spring.version}</version>
+		</dependency>
+		
+				<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${security.version}</version>
 		</dependency>
 
 	<!-- JSF Dependencies -->
