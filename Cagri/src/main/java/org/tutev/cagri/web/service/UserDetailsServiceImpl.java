@@ -6,16 +6,15 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.tutev.cagri.web.dto.kullanici.Role;
-import org.tutev.cagri.web.dto.kullanici.User;
 import org.tutev.cagri.web.dto.kullanici.UserStatus;
 
-@SuppressWarnings("deprecation")
 @Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
@@ -24,9 +23,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	
 	@Override
 	@Transactional(readOnly = true)
-	public UserDetails loadUserByUsername(String username)
-			throws UsernameNotFoundException {
-		User user = userDao.findUserByName(username); //our own User model class
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		org.tutev.cagri.web.dto.kullanici.User user = userDao.findUserByName(username); //our own User model class
 		
 		if(user!=null){
 			String password = user.getPassword();
@@ -43,8 +41,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			}
 			
 			//Now let's create Spring Security User object
-			org.springframework.security.core.userdetails.User securityUser = new 
-					org.springframework.security.core.userdetails.User(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+			User securityUser = new User(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
 			return securityUser;
 		}else{
 			throw new UsernameNotFoundException("User Not Found!!!");

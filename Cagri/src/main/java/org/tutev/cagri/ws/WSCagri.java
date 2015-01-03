@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 public class WSCagri {
 	
-	@XmlElement(name="incidentId")
+//	@XmlElement(name="incidentId")
 	Long cagriId;
 	String cagriNo;
 	Date cagriGelisTarihi;

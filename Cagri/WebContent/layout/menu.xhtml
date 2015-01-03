@@ -7,8 +7,7 @@
 
 <h:form id="menuForm">
 	<p:growl id="messages" />
-	<p:tieredMenu model="#{uygulamaController.menuModel}" >
-	</p:tieredMenu>
+
 	<h:form>
 			<p:outputLabel value="#{kullanici.username} giriş yaptı."></p:outputLabel>
 			<p:commandButton action="#{loginController.logout}" value="çıkış" ajax="false"></p:commandButton>

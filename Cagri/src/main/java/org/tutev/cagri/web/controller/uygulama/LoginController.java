@@ -39,7 +39,7 @@ public class LoginController {
 		try {
 
 			ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-			RequestDispatcher dispatcher = ((ServletRequest) context.getRequest()).getRequestDispatcher("/j_spring_security_check");
+			RequestDispatcher dispatcher = ((ServletRequest) context.getRequest()).getRequestDispatcher("j_spring_security_check");
 
 			dispatcher.forward((ServletRequest) context.getRequest(),(ServletResponse) context.getResponse());
 			FacesContext.getCurrentInstance().responseComplete();
@@ -55,7 +55,7 @@ public class LoginController {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-		if (!authentication.getPrincipal().toString().equals("anonymousUser")) {
+		if (authentication !=null && !authentication.getPrincipal().toString().equals("anonymousUser")) {
 
 			NavigationHandler nh = FacesContext.getCurrentInstance().getApplication().getNavigationHandler();
 			nh.handleNavigation(FacesContext.getCurrentInstance(), null,"/secure/index.xhtml?faces-redirect=true");

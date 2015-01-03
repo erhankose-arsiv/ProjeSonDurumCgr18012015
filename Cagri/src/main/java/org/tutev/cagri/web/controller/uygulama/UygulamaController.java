@@ -32,16 +32,17 @@ public class UygulamaController implements Serializable {
 
 	@Autowired
 	private transient UygulamaService uygulamaService;
+
 	
 	MenuModel menuModel;
 
 	@PostConstruct
 	private void init() {
 		try{
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		//HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		
 //		if(uygulamaService!=null ){
-		Kullanici kullanici = (Kullanici) session.getAttribute("kullanici");
+		Kullanici kullanici = uygulamaService.getUser(); //(Kullanici) session.getAttribute("kullanici");
 
 		List<Menu> menuList = uygulamaService.getAll();
 

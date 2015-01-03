@@ -11,8 +11,8 @@
     <http use-expressions="true">
     	<intercept-url pattern="/index.xhtml" access="permitAll" />
         <intercept-url pattern="/secure/**" access="hasRole('Admin')"/>
-        <form-login login-processing-url="/j_spring_security_check" login-page="/login.xhtml"
-                             default-target-url="/secure/index.xhtml" authentication-failure-url="/login.xhtml"/>
+        <form-login login-processing-url="/j_spring_security_check" login-page="/lgn.xhtml" 
+                             default-target-url="/secure/index.xhtml" authentication-failure-url="/lgn.xhtml"/>
         <logout invalidate-session="true" logout-success-url="/login.xhtml"/>
     </http>
 	
