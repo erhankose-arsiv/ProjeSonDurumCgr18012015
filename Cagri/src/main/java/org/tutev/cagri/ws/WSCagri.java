@@ -2,8 +2,11 @@ package org.tutev.cagri.ws;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlElement;
+
 public class WSCagri {
 	
+	@XmlElement(name="incidentId")
 	Long cagriId;
 	String cagriNo;
 	Date cagriGelisTarihi;
