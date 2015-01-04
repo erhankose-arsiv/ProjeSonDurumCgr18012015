@@ -60,10 +60,10 @@
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
 				<prop key="hibernate.max_fetch_depth">0</prop> 
+				<prop key="hibernate.ejb.interceptor" >org.tutev.cagri.web.base.AuditTrailInterceptor</prop>
 			</props>
 			
 		</property>
-		<property name="entityInterceptor" value="org.tutev.cagri.web.base.AuditTrailInterceptor"/>
 	</bean>
 	
 	<tx:annotation-driven transaction-manager="txManager" />

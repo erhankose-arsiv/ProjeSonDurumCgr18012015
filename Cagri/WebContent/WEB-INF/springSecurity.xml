@@ -13,7 +13,7 @@
         <intercept-url pattern="/secure/**" access="hasRole('Admin')"/>
         <form-login login-processing-url="/j_spring_security_check" login-page="/lgn.xhtml" 
                              default-target-url="/secure/index.xhtml" authentication-failure-url="/lgn.xhtml"/>
-        <logout invalidate-session="true" logout-success-url="/login.xhtml"/>
+        <logout invalidate-session="true" logout-success-url="/lgn.xhtml"/>
     </http>
 	
 	<beans:bean id="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">

@@ -9,7 +9,7 @@
 	<ui:define name="content">
 		<h:form id="frmAnaSayfa">
 			<p:panelGrid id="pnlDetay">
-				<p:row>
+				<!--<p:row>
 					<p:column>
 						<h:outputText value=" il :" />
 					</p:column>
@@ -23,6 +23,17 @@
 							</p:column>
 
 						</p:selectOneMenu>
+					</p:column>
+				</p:row>-->
+				<p:row>
+					<p:column>
+						<h:outputText value=" il :" />
+					</p:column>
+					<p:column>
+						<p:autoComplete id="ilAcomp" value="#{indexController.il}"
+							completeMethod="#{indexController.ilComplete}" var="il"
+							itemLabel="#{il.tanim}" itemValue="#{il}"
+							converter="#{ilConverter}" forceSelection="true" />
 					</p:column>
 				</p:row>
 				<p:row>

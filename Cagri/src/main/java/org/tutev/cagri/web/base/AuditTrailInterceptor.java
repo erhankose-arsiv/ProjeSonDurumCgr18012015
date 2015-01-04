@@ -21,6 +21,7 @@ class AuditTrailInterceptor extends EmptyInterceptor {
 		return true;
 	}
 
+	@Override
 	public boolean onSave(Object entity, Serializable id, Object[] state,
 		String[] propertyNames, Type[] types) {
 		setValue(state, propertyNames, "ekleyen",1);

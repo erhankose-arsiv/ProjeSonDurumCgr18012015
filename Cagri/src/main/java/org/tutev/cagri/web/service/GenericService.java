@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,13 @@ public class GenericService  {
 	public List<Ilce> getIlceByIlId(Long id) {
 		Criteria criteria=baseDao.getSession().createCriteria(Ilce.class);
 		criteria.add(Restrictions.eq("il.id", id));
+		return criteria.list();
+	}
+	
+	public List<Il> getIlByName(String name) {
+		Criteria criteria=baseDao.getSession().createCriteria(Il.class);
+		criteria.add(Restrictions.ilike("tanim", name,MatchMode.ANYWHERE));
+		criteria.setMaxResults(10);
 		return criteria.list();
 	}
 

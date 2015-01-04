@@ -50,6 +50,23 @@ public class LoginController {
 			return null;
 		}
 	}
+	
+	public String logout() {
+
+		try {
+
+			ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+			RequestDispatcher dispatcher = ((ServletRequest) context.getRequest()).getRequestDispatcher("/j_spring_security_logout");
+
+			dispatcher.forward((ServletRequest) context.getRequest(),(ServletResponse) context.getResponse());
+			FacesContext.getCurrentInstance().responseComplete();
+
+		} catch (ServletException | IOException ex) {
+			Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			return null;
+		}
+	}
 
 	public void authorizedUserControl() {
 
@@ -62,6 +79,7 @@ public class LoginController {
 
 		}
 	}
+	
 
 	public String getUsername() {
 		return username;

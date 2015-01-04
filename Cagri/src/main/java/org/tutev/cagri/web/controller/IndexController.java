@@ -44,6 +44,8 @@ public class IndexController implements Serializable {
 	 */
 	private static final long serialVersionUID = -2354524395435334338L;
 
+	@Autowired
+	GenericService genericService;
 
 	Il il;
 	CurrentWeather curWeather;
@@ -82,6 +84,11 @@ public class IndexController implements Serializable {
 
 
 
+	}
+	
+	public List<Il> ilComplete(String name) {
+		List<Il> illist= genericService.getIlByName(name);
+		return illist;
 	}
 	
 	public Il getIl() {
