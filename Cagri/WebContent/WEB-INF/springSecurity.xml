@@ -5,9 +5,6 @@
                     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                     http://www.springframework.org/schema/security 
                     http://www.springframework.org/schema/security/spring-security-3.1.xsd">
-    
-    <!-- We will be defining all security related configurations in this file -->
-    
     <http use-expressions="true">
     	<intercept-url pattern="/index.xhtml" access="permitAll" />
         <intercept-url pattern="/secure/**" access="hasRole('Admin')"/>
@@ -15,12 +12,9 @@
                              default-target-url="/secure/index.xhtml" authentication-failure-url="/lgn.xhtml"/>
         <logout invalidate-session="true" logout-success-url="/lgn.xhtml"/>
     </http>
-	
 	<beans:bean id="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
 	    <beans:property name="userDetailsService" ref="userDetailsService" ></beans:property>
-	    
 	</beans:bean>
-	
 	<beans:bean id="authenticationManager" class="org.springframework.security.authentication.ProviderManager">
 	    <beans:property name="providers">
 	        <beans:list>
@@ -28,7 +22,6 @@
 	        </beans:list>
 	    </beans:property>
 	</beans:bean>
-	
 	<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">  
         <beans:property name="basenames">  
             <beans:list>
@@ -36,7 +29,6 @@
             </beans:list>
         </beans:property>
     </beans:bean>
-	
 	<authentication-manager>
 	    <authentication-provider user-service-ref="userDetailsService">
 	        <password-encoder hash="md5"></password-encoder>

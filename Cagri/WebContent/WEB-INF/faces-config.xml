@@ -11,7 +11,7 @@
             org.springframework.web.jsf.el.SpringBeanFacesELResolver
         </el-resolver>
     </application>
-        <factory>
+	<factory>
 		<exception-handler-factory>org.tutev.cagri.web.base.GlobalException</exception-handler-factory>
 	</factory>
     <system-event-listener>
@@ -19,7 +19,6 @@
 	    <system-event-class>javax.faces.event.PostConstructViewMapEvent</system-event-class>
 	    <source-class>javax.faces.component.UIViewRoot</source-class>
 	</system-event-listener>
- 
 	<system-event-listener>
 	    <system-event-listener-class>com.example.ViewScopeCallbackRegistrar</system-event-listener-class>
 	    <system-event-class>javax.faces.event.PreDestroyViewMapEvent</system-event-class>

@@ -1,7 +1,6 @@
 package org.tutev.cagri.web.controller.cagri;
 
 import java.io.Serializable;
-import java.nio.file.DirectoryStream.Filter;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;

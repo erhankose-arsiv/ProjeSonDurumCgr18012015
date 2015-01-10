@@ -8,8 +8,6 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.springframework.format.annotation.NumberFormat;
-
 @MappedSuperclass
 public class Base implements Serializable{
 

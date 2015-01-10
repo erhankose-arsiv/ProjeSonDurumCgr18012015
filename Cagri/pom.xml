@@ -137,7 +137,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernatecore.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>
@@ -150,7 +149,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 			<artifactId>postgresql</artifactId>
 			<version>9.1-901.jdbc3</version>
 		</dependency>
-
 
 		<!-- c3p0 dependency -->
 		<dependency>
@@ -225,7 +223,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	</dependencies>
 
 	<build>
-		<testSourceDirectory>src/main/test</testSourceDirectory>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

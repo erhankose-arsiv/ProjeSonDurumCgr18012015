@@ -56,7 +56,6 @@ public class Kisi extends Base{
 	}
 	
 	@Column(name="SOYAD",length=50)
-//	@NamedQuery(query=" from tbl_abc where kisiId=:id")
 	public String getSoyad() {
 		return soyad;
 	}

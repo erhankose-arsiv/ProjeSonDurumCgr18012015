@@ -48,6 +48,4 @@ public class Iletisim implements Serializable{
 	public void setEposta2(String eposta2) {
 		this.eposta2 = eposta2;
 	}
-	
-	
 }

@@ -15,19 +15,8 @@
 		http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
 		http://www.springframework.org/schema/task
 		http://www.springframework.org/schema/task/spring-task-3.1.xsd">
-
 	<context:component-scan base-package="org.tutev.cagri" />
-	
-<!-- 	<aop:aspectj-autoproxy /> -->
-<!-- 	<task:scheduler id="taskScheduler" /> -->
-<!-- 	<task:executor id="taskExecutor" pool-size="3" /> -->
-<!-- 	<tx:annotation-driven transaction-manager="txManager" /> -->
-<!-- 	<task:annotation-driven executor="taskExecutor" scheduler="taskScheduler" /> -->
-
-	
-	
 	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
-
 	<bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
 		<property name="scopes">
 			<map>
@@ -37,7 +26,6 @@
 			</map>
 		</property>
 	</bean>
-
  	<bean id="DataSource" class="org.postgresql.jdbc3.Jdbc3PoolingDataSource">
 		<property name="serverName" value="localhost" />
 		<property name="portNumber" value="5432" />
@@ -47,7 +35,6 @@
 		<property name="initialConnections" value="3" />
 		<property name="maxConnections" value="50" />
 	</bean>
-	
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="DataSource" />
@@ -65,14 +52,11 @@
 			
 		</property>
 	</bean>
-	
 	<tx:annotation-driven transaction-manager="txManager" />
 	<bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
 	<bean class="org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter">
 		<property name="baseAddress" value="http://localhost:8888/" />
 	</bean>
-	
 </beans>
