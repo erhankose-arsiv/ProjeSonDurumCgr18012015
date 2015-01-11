@@ -8,6 +8,8 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.NumberFormat;
+
 @MappedSuperclass
 public class Base implements Serializable{
 
@@ -37,7 +39,7 @@ public class Base implements Serializable{
 	}
 	
 	@Column(name="EKLEME_TARIHI")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	public Date getEklemeTarihi() {
 		return eklemeTarihi;
 	}

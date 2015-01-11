@@ -28,7 +28,12 @@ public class DataService implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		ilList=(List<Il>) baseDao.getAll(Il.class);
+		try{
+			ilList=(List<Il>) baseDao.getAll(Il.class);
+			LOGGER.info("Singleton DataServis Yüklendi");
+		}catch(Exception e){
+			LOGGER.info(e.getStackTrace());
+		}
 	}
 	
 	public List<Il> getIlList() {

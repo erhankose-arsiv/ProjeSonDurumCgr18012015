@@ -33,13 +33,12 @@ public class CagriController implements Serializable {
 	 */
 	private static final long serialVersionUID = -2354524395435334338L;
 
-
 	@Autowired
-	private transient CagriService cagriService;
+	transient CagriService cagriService;
 	@Autowired
-	private transient GenericService genericService;
+	transient GenericService genericService;
 	@Autowired
-	private transient MessageController messageController;
+	transient MessageController messageController;
 
 	Cagri cagri;
 	List<Cagri> cagriList;
@@ -54,16 +53,12 @@ public class CagriController implements Serializable {
 		cagri = new Cagri();
 	}
 
-//	private void listele() {
-//		cagriList = cagriService.getAll();
-//	}
-
 	private LazyDataModel<Cagri> lazyModel;
+	
 	public LazyDataModel<Cagri> getLazyModel() {
 		return lazyModel;
 	}
 
-	
 	public void listele() {
 		this.lazyModel = new LazyDataModel<Cagri>() {
 
@@ -114,7 +109,6 @@ public class CagriController implements Serializable {
 		};
 	}   
 	
-	
 	public void clearFilters() {
 		gelisTarihiBaslama=null;
 		gelisTarihiBitis=null;
@@ -154,7 +148,6 @@ public class CagriController implements Serializable {
 
 	}
 	
-	
 	public void filter() {
 
 		if(gelisTarihiBitis!=null){
@@ -192,6 +185,7 @@ public class CagriController implements Serializable {
 	public List<Ilce> getIlceList() {
 		return ilceList;
 	}
+	
 	public void setIlceList(List<Ilce> ilceList) {
 		this.ilceList = ilceList;
 	}

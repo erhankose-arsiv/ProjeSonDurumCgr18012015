@@ -46,6 +46,9 @@ public class IndexController implements Serializable {
 
 	@Autowired
 	GenericService genericService;
+	
+	@Autowired
+	Sabit sabit;
 
 	Il il;
 	CurrentWeather curWeather;
@@ -61,7 +64,7 @@ public class IndexController implements Serializable {
 		try {
 			
 			
-			gw = new GlobalWeather(new URL("http://www.webservicex.net/globalweather.asmx?wsdl"));
+			gw = new GlobalWeather(new URL(sabit.getServiceAdress()));
 			GlobalWeatherSoap soap=gw.getGlobalWeatherSoap();
 			String donenMesaj=soap.getWeather(il.getTanim(), "TURKEY");
 			System.out.println(donenMesaj);

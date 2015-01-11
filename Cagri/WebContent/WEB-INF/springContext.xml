@@ -15,8 +15,15 @@
 		http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
 		http://www.springframework.org/schema/task
 		http://www.springframework.org/schema/task/spring-task-3.1.xsd">
-	<context:component-scan base-package="org.tutev.cagri" />
+		
 	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
+	
+	<bean id="sabit" class="org.tutev.cagri.web.dto.Sabit">
+		<property name="serviceAdress" value="http://www.webservicex.net/globalweather.asmx?wsdl"></property>
+	</bean>
+
+	<context:component-scan base-package="org.tutev.cagri" />
+
 	<bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
 		<property name="scopes">
 			<map>
@@ -48,8 +55,10 @@
 				<prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
 				<prop key="hibernate.max_fetch_depth">0</prop> 
 				<prop key="hibernate.ejb.interceptor" >org.tutev.cagri.web.base.AuditTrailInterceptor</prop>
-			</props>
-			
+			</props>			
+		</property>
+		<property name="entityInterceptor">
+			<bean class="org.tutev.cagri.web.base.AuditTrailInterceptor"></bean>
 		</property>
 	</bean>
 	<tx:annotation-driven transaction-manager="txManager" />

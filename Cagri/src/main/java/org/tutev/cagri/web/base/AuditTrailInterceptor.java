@@ -16,7 +16,7 @@ class AuditTrailInterceptor extends EmptyInterceptor {
 	public boolean onFlushDirty(Object entity, Serializable id,
 		Object[] currentState, Object[] previousState,
 		String[] propertyNames, Type[] types) {
-		setValue(currentState, propertyNames, "guncelleyen",1);
+		setValue(currentState, propertyNames, "guncelleyen","1");
 		setValue(currentState, propertyNames, "guncellemeTarihi", new Date());
 		return true;
 	}
@@ -24,7 +24,7 @@ class AuditTrailInterceptor extends EmptyInterceptor {
 	@Override
 	public boolean onSave(Object entity, Serializable id, Object[] state,
 		String[] propertyNames, Type[] types) {
-		setValue(state, propertyNames, "ekleyen",1);
+		setValue(state, propertyNames, "ekleyen","1");
 		setValue(state, propertyNames, "eklemeTarihi", new Date());
 		setValue(state, propertyNames, "durum", Boolean.TRUE);
 		return true;

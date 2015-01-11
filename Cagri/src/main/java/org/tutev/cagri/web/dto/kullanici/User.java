@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
 import org.tutev.cagri.web.dto.Base;
 import org.tutev.cagri.web.dto.genel.Kisi;
@@ -80,6 +81,7 @@ public class User extends Base{
 	@JoinTable(name="UsersAndRoles",
 			joinColumns=@JoinColumn(name="user_id", referencedColumnName="id"),
 			inverseJoinColumns=@JoinColumn(name="role_id", referencedColumnName="id"))
+	
 	public List<Role> getRoles() {
 		return roles;
 	}

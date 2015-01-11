@@ -4,9 +4,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Sabit {
 
 	public static String dateFormatDDMMYYYY="ddMMyyyy";
+	public String serviceAdress;
 	
 	public static String dateToStringDDMMYYY(Date d) {
 		SimpleDateFormat sdf=new SimpleDateFormat(dateFormatDDMMYYYY);
@@ -23,5 +27,12 @@ public class Sabit {
 			e.printStackTrace();
 		} 
 		return date;
+	}
+	
+	public String getServiceAdress() {
+		return serviceAdress;
+	}
+	public void setServiceAdress(String serviceAdress) {
+		this.serviceAdress = serviceAdress;
 	}
 }
