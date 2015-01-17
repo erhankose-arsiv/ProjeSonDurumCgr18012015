@@ -37,7 +37,6 @@ public class LoginController {
 	public String doLogin() {
 
 		try {
-
 			ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
 			RequestDispatcher dispatcher = ((ServletRequest) context.getRequest()).getRequestDispatcher("j_spring_security_check");
 

@@ -45,10 +45,10 @@ public class IndexController implements Serializable {
 	private static final long serialVersionUID = -2354524395435334338L;
 
 	@Autowired
-	GenericService genericService;
+	private transient GenericService genericService;
 	
 	@Autowired
-	Sabit sabit;
+	private transient Sabit sabit;
 
 	Il il;
 	CurrentWeather curWeather;
@@ -56,31 +56,18 @@ public class IndexController implements Serializable {
 
 	@PostConstruct
 	private void init() {
-		FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+//		FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 	}
 
 	public void havaDurumuVer() {
 		GlobalWeather gw;
 		try {
-			
-			
 			gw = new GlobalWeather(new URL(sabit.getServiceAdress()));
 			GlobalWeatherSoap soap=gw.getGlobalWeatherSoap();
 			String donenMesaj=soap.getWeather(il.getTanim(), "TURKEY");
 			System.out.println(donenMesaj);
-			
-//			JAXBContext jaxbContext = JAXBContext.newInstance(Person.class);
-//			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-//
-//			StringReader reader = new StringReader("xml string here");
-//			Person person = (Person) unmarshaller.unmarshal(reader);
-			
 			this.curWeather = JAXB.unmarshal(new StringReader(donenMesaj), CurrentWeather.class);
-
-//			String cityNames=soap.getCitiesByCountry("TURKEY");
-//			System.out.println(cityNames);
 			RequestContext.getCurrentInstance().update(":frmAnaSayfa:pnlHavaDurumDetay");
-			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}

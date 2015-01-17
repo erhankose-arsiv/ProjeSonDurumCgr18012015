@@ -15,6 +15,7 @@ public class GlobalException extends ExceptionHandlerFactory {
 	public ExceptionHandler getExceptionHandler() {
 		ExceptionHandler result = exceptionHandlerFactory.getExceptionHandler();
 		result = new GlobalExceptionHandler(result);
+		
 		return result;
 	}
 }

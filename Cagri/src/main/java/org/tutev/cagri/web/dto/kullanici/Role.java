@@ -10,11 +10,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.Type;
 import org.tutev.cagri.web.dto.Base;
 
 @Entity
 @Table(name = "AUTH_ROLE")
+@TableGenerator(name="seq_id_generator",table="ID")
 public class Role extends Base {
 
 	private static final long serialVersionUID = 340785780484402664L;
@@ -51,7 +55,8 @@ public class Role extends Base {
 		this.roleName = roleName;
 	}
 
-	@ManyToMany(mappedBy = "roles")
+	@ManyToMany(mappedBy = "roles" )
+	@CollectionId(columns=@Column(name="ID"),type=@Type(type="long"),generator="seq_id_generator")
 	public List<User> getUsers() {
 		return users;
 	}

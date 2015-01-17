@@ -15,7 +15,7 @@ import org.tutev.cagri.web.service.GenericService;
 public class RoleConverter implements Converter {
 	
 	@Autowired
-	private GenericService genericService;
+	private transient GenericService genericService;
 
 	@Override
 	public Object getAsObject(FacesContext arg0, UIComponent arg1, String arg2) {

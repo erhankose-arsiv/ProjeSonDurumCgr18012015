@@ -1099,3 +1099,9 @@ INSERT INTO auth_menu_yetki(menu_id, yetki_id) VALUES (4, 2);
 ----------------------- Uygulama Tables end --------------------------------
 
 
+
+
+
+INSERT INTO usersandroles(
+            user_id, role_id, id)
+    VALUES (1, 1, 1);

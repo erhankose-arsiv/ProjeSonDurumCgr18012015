@@ -12,23 +12,26 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ExceptionQueuedEvent;
 import javax.faces.event.ExceptionQueuedEventContext;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.tutev.cagri.web.service.GenericService;
 
-//@Component
-public class GlobalExceptionHandler  extends ExceptionHandlerWrapper {
+public  class GlobalExceptionHandler  extends ExceptionHandlerWrapper  {
 	
 	private ExceptionHandler exceptionHandler;
 	
 //	@Autowired
-//	private GenericService genericService;
+//	private transient GenericService genericService;
 	
 
 	public GlobalExceptionHandler(ExceptionHandler exceptionHandler) {	
 		this.exceptionHandler = exceptionHandler;
 	}
+	
 	
 	@Override
 	public ExceptionHandler getWrapped() {
@@ -46,7 +49,7 @@ public class GlobalExceptionHandler  extends ExceptionHandlerWrapper {
 				Throwable t = (Throwable)throwable;
 				t.printStackTrace();
 		
-//				genericService.addException(new Exception(t.getMessage()));
+//				genericService.addException(new Exception(t.toString()));
 				
 				FacesContext facesContext = FacesContext.getCurrentInstance();
 				NavigationHandler navigationHandler = facesContext.getApplication().getNavigationHandler();
@@ -67,6 +70,8 @@ public class GlobalExceptionHandler  extends ExceptionHandlerWrapper {
 			}
 		}
 	}
+
+
 	
 }
 
