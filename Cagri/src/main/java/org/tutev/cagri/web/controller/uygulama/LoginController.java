@@ -30,8 +30,9 @@ public class LoginController {
 	private String username;
 	private String password;
 	private Kullanici kullanici;
+	
 
-	String theme = "sunny";
+	String theme = "ui-lightness";
 
 	@SuppressWarnings("finally")
 	public String doLogin() {
@@ -53,7 +54,6 @@ public class LoginController {
 	public String logout() {
 
 		try {
-
 			ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
 			RequestDispatcher dispatcher = ((ServletRequest) context.getRequest()).getRequestDispatcher("/j_spring_security_logout");
 
@@ -104,4 +104,11 @@ public class LoginController {
 		this.password = password;
 	}
 
+	public String getTheme() {
+		return theme;
+	}
+	
+	public void setTheme(String theme) {
+		this.theme = theme;
+	}
 }

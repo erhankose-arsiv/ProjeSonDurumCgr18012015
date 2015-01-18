@@ -71,7 +71,5 @@ public  class GlobalExceptionHandler  extends ExceptionHandlerWrapper  {
 		}
 	}
 
-
-	
 }
 

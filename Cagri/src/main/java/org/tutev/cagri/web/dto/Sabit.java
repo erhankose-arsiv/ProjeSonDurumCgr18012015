@@ -12,6 +12,7 @@ public class Sabit {
 	public static String dateFormatDDMMYYYY="ddMMyyyy";
 	public String serviceAdress;
 	
+	
 	public static String dateToStringDDMMYYY(Date d) {
 		SimpleDateFormat sdf=new SimpleDateFormat(dateFormatDDMMYYYY);
 		return sdf.format(d);

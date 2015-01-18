@@ -4,14 +4,12 @@ import java.util.List;
 import java.util.Locale;
 import java.lang.Exception;
 
-import org.hibernate.CacheMode;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.transform.ResultTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
@@ -21,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class BaseDao {
 	@Autowired
 	private SessionFactory sessionFactory;
+	
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void save(Object object) {

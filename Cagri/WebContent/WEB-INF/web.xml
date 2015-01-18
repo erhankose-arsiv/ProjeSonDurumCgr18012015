@@ -20,8 +20,7 @@
       <context-param>
          <param-name>contextConfigLocation</param-name>
          <param-value>
-            /WEB-INF/springContext.xml
-            /WEB-INF/springSecurity.xml
+/WEB-INF/springContext.xml        /WEB-INF/springSecurity.xml
          </param-value>
       </context-param>
  
@@ -57,7 +56,7 @@
       </context-param>
  	<context-param>
 		<param-name>primefaces.THEME</param-name>
-		<param-value>sunny</param-value>
+		<param-value>#{loginController.theme}</param-value>
 	</context-param>
       <welcome-file-list>
         <welcome-file>lgn.xhtml</welcome-file>
